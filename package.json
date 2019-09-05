@@ -1,0 +1,19 @@
+{
+  "name": "tricore-emulator",
+  "version": "0.0.1",
+  "description": "A hacky emulator designed to execute TriCore instructions",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brandonros/tricore-emulator.git"
+  },
+  "author": "Brandon Ros",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/brandonros/tricore-emulator/issues"
+  },
+  "homepage": "https://github.com/brandonros/tricore-emulator#readme",
+  "dependencies": {
+    "execa": "^2.0.4"
+  }
+}
