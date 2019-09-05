@@ -1,7 +1,7 @@
 {
   "name": "tricore-emulator",
   "version": "0.0.1",
-  "description": "A hacky emulator designed to execute TriCore instructions",
+  "description": "A hacky emulator designed to execute Infineon TriCore microcontroller instructions",
   "main": "index.js",
   "repository": {
     "type": "git",
