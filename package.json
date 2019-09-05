@@ -14,6 +14,7 @@
   },
   "homepage": "https://github.com/brandonros/tricore-emulator#readme",
   "dependencies": {
+    "debug": "^4.1.1",
     "execa": "^2.0.4"
   }
 }

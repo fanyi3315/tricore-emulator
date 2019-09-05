@@ -48,7 +48,6 @@ const run = async () => {
       throw new Error(`Instruction not found at ${registers.pc.toString(16)}`)
     }
     handleInstruction(instruction)
-    console.log(registers.pc.toString(16))
   }
 }
 

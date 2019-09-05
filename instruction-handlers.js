@@ -1,3 +1,4 @@
+const debug = require('debug')('instruction-handlers')
 const registers = require('./registers')
 const { getMemory, setMemory } = require('./memory')
 const {
@@ -14,6 +15,7 @@ module.exports = {
     // add        d0,#0x1
     const register = instruction.operands[0]
     const value = parseInt(instruction.operands[1], 10)
+    debug(`${registers.pc.toString(16)} add ${register} ${value}`)
     registers[register] += value
     registers.pc += instruction.size
   },
@@ -22,6 +24,7 @@ module.exports = {
     const destinationRegister = instruction.operands[0]
     const sourceRegister = instruction.operands[1]
     const value = parseInt(instruction.operands[2], 10)
+    debug(`${registers.pc.toString(16)} addi ${destinationRegister} ${sourceRegister} ${value}`)
     registers[destinationRegister] = registers[sourceRegister] + signExtend(value)
     registers.pc += instruction.size
   },
@@ -31,6 +34,7 @@ module.exports = {
     const destinationRegister = instruction.operands[0]
     const sourceRegister = instruction.operands[1]
     const value = parseInt(instruction.operands[2])
+    debug(`${registers.pc.toString(16)} addih ${destinationRegister} ${sourceRegister} ${value}`)
     registers[destinationRegister] = registers[sourceRegister] + (value << 16)
     registers.pc += instruction.size
   },
@@ -40,6 +44,7 @@ module.exports = {
     const sourceRegister = instruction.operands[1]
     const dataRegister = instruction.operands[2]
     const value = parseInt(instruction.operands[3], 10)
+    debug(`${registers.pc.toString(16)} addsc.a ${destinationRegister} ${sourceRegister} ${dataRegister} ${value}`)
     registers[destinationRegister] = sourceRegister + (dataRegister << value)
     registers.pc += instruction.size
   },
@@ -57,6 +62,7 @@ module.exports = {
   },
   'call': (instruction) => {
     const address = parseInt(instruction.operands[0], 16)
+    debug(`${registers.pc.toString(16)} call ${address}`)
     registers.returnAddress = registers.pc + instruction.size
     registers.pc = address
     // call       FUN_800004a4
@@ -76,6 +82,7 @@ module.exports = {
   },
   'extr.u': (instruction) => {
     // extr.u     d0,d0,#0x1c,#0x4
+    debug(`${registers.pc.toString(16)} extr.u ${destinationRegister} ${sourceRegister} ${position} ${width} ${value}`)
     const destinationRegister = instruction.operands[0]
     const sourceRegister = instruction.operands[1]
     const position = parseInt(instruction.operands[2])
@@ -124,6 +131,7 @@ module.exports = {
     const secondOperandType = determineOperandType(secondOperand)
     const valueB = secondOperandType === 'register' ? registers[secondOperand] : parseInt(secondOperand, 10) // TODO: i don't know the initial values of registers
     const address = parseInt(instruction.operands[2], 16)
+    debug(`${registers.pc.toString(16)} jne ${registerA} ${valueA} ${secondOperand} ${valueB} ${address}`)
     if (valueA !== valueB) {
       registers.pc = address // TODO: is it supposed to be this instead: PC = PC + sign_ext(disp15) * 2; ?
     } else {
@@ -184,6 +192,7 @@ module.exports = {
     // 09 ff 58 08     ld.bu      d15,[a15]offset DAT_80018018
     const destinationRegister = instruction.operands[0]
     const [addressRegister, offset] = parseAddressRegisterAndOffset(instruction.operands[1])
+    debug(`${registers.pc.toString(16)} ld.bu ${destinationRegister} ${addressRegister} ${offset}`)
     registers[destinationRegister] = getMemory(registers[addressRegister] + offset, 'byte')
     registers.pc += instruction.size
   },
@@ -213,6 +222,7 @@ module.exports = {
     // d9 00 20 87     lea        a0,[a0]0x7220
     const destinationRegister = instruction.operands[0]
     const [addressRegister, offset] = parseAddressRegisterAndOffset(instruction.operands[1])
+    debug(`${registers.pc.toString(16)} lea ${destinationRegister} ${addressRegister} ${offset}`)
     registers[destinationRegister] = registers[addressRegister + offset]
     registers.pc += instruction.size
   },
@@ -220,6 +230,7 @@ module.exports = {
     // loop       a2,LAB_80000616
     const addressRegister = instruction.operands[0]
     const address = parseInt(instruction.operands[1], 16)
+    debug(`${registers.pc.toString(16)} loop ${addressRegister} ${address}`)
     if (registers[addressRegister] != 0) {
       registers.pc = registers.pc + signExtend(2 * address)
     }
@@ -233,6 +244,7 @@ module.exports = {
     // mfcr       d15,#0xfe08
     const dataRegister = instruction.operands[0]
     const value = instruction.operands[1]
+    debug(`${registers.pc.toString(16)} mfcr ${dataRegister} ${value}`)
     registers[dataRegister] = registers.cr[value] // TODO: do not know the contents of CR
     registers.pc += instruction.size
   },
@@ -275,6 +287,7 @@ module.exports = {
     const secondOperand = instruction.operands[1]
     const secondOperandType = determineOperandType(instruction.operands[2])
     const value = secondOperandType === 'register' ? registers[secondOperand] : parseInt(secondOperand, 10) // TODO: i don't know the initial values of registers
+    debug(`${registers.pc.toString(16)} mov ${destinationRegister} ${secondOperand} ${value}`)
     registers[destinationRegister] = value // TODO: zero_extend/sign_extend or something
     registers.pc += instruction.size
   },
@@ -285,6 +298,7 @@ module.exports = {
     const secondOperand = instruction.operands[1]
     const secondOperandType = determineOperandType(instruction.operands[2])
     const value = secondOperandType === 'register' ? registers[secondOperand] : parseInt(secondOperand, 10) // TODO: i don't know the initial values of registers
+    debug(`${registers.pc.toString(16)} mov.a ${destinationRegister} ${secondOperand} ${value}`)
     registers[destinationRegister] = value // TODO: zero_extend or something
     registers.pc += instruction.size
   },
@@ -309,6 +323,7 @@ module.exports = {
     // movh       d15,#0x8000
     const dataRegister = instruction.operands[0]
     const value = parseInt(instruction.operands[1], 10)
+    debug(`${registers.pc.toString(16)} movh ${dataRegister} ${value}`)
     registers[dataRegister] = parseInt(`${value.toString(16)}0000`, 16)
     registers.pc += instruction.size
     registers.pc += instruction.size
@@ -321,6 +336,7 @@ module.exports = {
     // movh.a     a10,#0xd000
     const addressRegister = instruction.operands[0]
     const value = parseInt(instruction.operands[1], 10)
+    debug(`${registers.pc.toString(16)} movh.a ${addressRegister} ${value}`)
     registers[addressRegister] = parseInt(`${value.toString(16)}0000`, 16)
     registers.pc += instruction.size
   },
@@ -336,6 +352,7 @@ module.exports = {
   },
   'nop': (instruction) => {
     // nop
+    debug(`${registers.pc.toString(16)} nop`)
     registers.pc += instruction.size
   },
   'or': (instruction) => {
@@ -352,6 +369,7 @@ module.exports = {
   },
   'ret': (instruction) => {
     // ret
+    debug(`${registers.pc.toString(16)} ret`)
     registers.pc = registers.returnAddress
   },
   'sel': () => {
@@ -386,6 +404,7 @@ module.exports = {
     const [addressRegister, offset] = parseAddressRegisterAndOffset(instruction.operands[0])
     const dataRegister = instruction.operands[1]
     const value = leastSignificantBits(dataRegister, 8)
+    debug(`${registers.pc.toString(16)} st.b ${addressRegister} ${offset} ${dataRegister} ${value}`)
     setMemory(registers[addressRegister] + zeroExtend(offset), 'byte', value)
     registers.pc += instruction.size
   },
@@ -417,6 +436,7 @@ module.exports = {
     // sub.a      a10,#0x40
     const addressRegister = instruction.operands[0]
     const value = parseInt(instruction.operands[1], 10)
+    debug(`${registers.pc.toString(16)} sub.a ${addressRegister} ${value}`)
     if (addressRegister === 'sp') {
       registers.sp -= value
     } else {
