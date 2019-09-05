@@ -1,2 +1,2 @@
 # tricore-emulator
-A hacky emulator designed to execute TriCore instructions
+A hacky emulator designed to execute Infineon TriCore microcontroller instructions
