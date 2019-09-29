@@ -1,4 +1,16 @@
-module.exports = {
+const debug = require('debug')('registers')
+
+const handler = {
+  get: function (obj, prop) {
+    return obj[prop]
+  },
+  set: function (obj, prop, value) {
+    debug(`setRegister ${prop} ${value.toString(16)}`)
+    obj[prop] = value
+  }
+}
+
+const registers =  new Proxy({
   'a0': 0,
   'a1': 0,
   'a2': 0,
@@ -34,7 +46,11 @@ module.exports = {
   'd15': 0,
 
   'pc': 0x00000000,
-  'cr': {},
+  'cr': {
+    '65032': 0 // TODO: this is an assumption
+  },
 
   'returnAddress': 0x00000000
-}
+}, handler)
+
+module.exports = registers

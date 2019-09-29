@@ -342,7 +342,8 @@ describe('instruction-handlers', () => {
   })
 
   describe('or', () => {
-    // Compute the bitwise OR of the contents of data register D[a] and the contents of either data register D[b] (instruction format RR) or const9 (instruction format RC). Put the result in data register D[c]. The const9 value is zero-extended.
+    // Compute the bitwise OR of the contents of data register D[a] and the contents of either data register D[b] (instruction format RR) or const9 (instruction format RC).
+    // Put the result in data register D[c]. The const9 value is zero-extended.
     it('Bitwise OR', async () => {
       throw new Error('TODO')
     })

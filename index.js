@@ -1,4 +1,5 @@
 const readline = require('readline')
+const debug = require('debug')('index')
 const registers = require('./registers')
 const instructionHandlers = require('./instruction-handlers')
 const { disassembleRange } = require('./disassemble')
@@ -31,6 +32,16 @@ const readLine = () => {
   }))
 }
 
+const validateRegisters = () => {
+  Object.keys(registers).forEach(key => {
+    if (registers[key] === undefined) {
+      throw new Error(`${key} is undefined`)
+    }
+  })
+}
+
+let debuggerTripped = false
+
 const run = async () => {
   const baseAddress = 0x80000000
   const functionRanges = [
@@ -58,8 +69,15 @@ const run = async () => {
     if (!instruction) {
       throw new Error(`Instruction not found at ${registers.pc.toString(16)}`)
     }
+    debug(JSON.stringify(instruction))
+    if (registers.pc === 0x80000584) {
+      //debuggerTripped = true
+    }
+    if (debuggerTripped) {
+      await readLine()
+    }
     handleInstruction(instruction)
-    await readLine()
+    validateRegisters()
   }
 }
 
