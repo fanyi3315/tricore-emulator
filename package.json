@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "A hacky emulator designed to execute Infineon TriCore microcontroller instructions",
   "main": "index.js",
+  "scripts": {
+    "test": "mocha test/"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/brandonros/tricore-emulator.git"
@@ -16,5 +19,8 @@
   "dependencies": {
     "debug": "^4.1.1",
     "execa": "^2.0.4"
+  },
+  "devDependencies": {
+    "mocha": "^6.2.1"
   }
 }

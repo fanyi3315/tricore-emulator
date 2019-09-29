@@ -12,7 +12,7 @@ const {
 
 module.exports = {
   'add': (instruction) => {
-    // add        d0,#0x1
+    // c2 1f  add        d15,#0x1
     const register = instruction.operands[0]
     const value = parseInt(instruction.operands[1], 10)
     debug(`${registers.pc.toString(16)} add ${register} ${value}`)
@@ -372,7 +372,7 @@ module.exports = {
     debug(`${registers.pc.toString(16)} ret`)
     registers.pc = registers.returnAddress
   },
-  'sel': () => {
+  'sel': (instruction) => {
     // sel        d2,d4,d15,#0x0
     throw new Error('TODO')
     registers.pc += instruction.size
