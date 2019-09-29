@@ -1,7 +1,7 @@
 const execa = require('execa')
 const firmware = require('./firmware')
 
-exports.disassembleInput = async (input, start) => {
+const disassembleInput = async (input, start) => {
   const { stdout } = await execa('rasm2', ['-a', 'tricore', '-o', start, '-D', input])
   const lines = stdout.split('\n')
   return lines.map(line => {
@@ -17,7 +17,12 @@ exports.disassembleInput = async (input, start) => {
   })
 }
 
-exports.disassembleRange = async (baseAddress, start, end) => {
+const disassembleRange = async (baseAddress, start, end) => {
   const slice = firmware.slice(start - baseAddress, end - baseAddress)
   return disassembleInput(slice.toString('hex'), start)
+}
+
+module.exports = {
+  disassembleInput,
+  disassembleRange
 }

@@ -82,12 +82,12 @@ module.exports = {
   },
   'extr.u': (instruction) => {
     // extr.u     d0,d0,#0x1c,#0x4
-    debug(`${registers.pc.toString(16)} extr.u ${destinationRegister} ${sourceRegister} ${position} ${width} ${value}`)
     const destinationRegister = instruction.operands[0]
     const sourceRegister = instruction.operands[1]
     const position = parseInt(instruction.operands[2])
     const width = parseInt(instruction.operands[3])
     const value = extractBits(registers[sourceRegister], position, width)
+    debug(`${registers.pc.toString(16)} extr.u ${destinationRegister} ${sourceRegister} ${position} ${width} ${value}`)
     registers[destinationRegister] = zeroExtend(value)
     registers.pc += instruction.size
   },
@@ -230,12 +230,13 @@ module.exports = {
     // loop       a2,LAB_80000616
     const addressRegister = instruction.operands[0]
     const address = parseInt(instruction.operands[1], 16)
-    debug(`${registers.pc.toString(16)} loop ${addressRegister} ${address}`)
-    if (registers[addressRegister] != 0) {
-      registers.pc = registers.pc + signExtend(2 * address)
+    debug(`${registers.pc.toString(16)} loop ${addressRegister} ${address.toString(16)} ${registers[addressRegister]}`)
+    if (registers[addressRegister] !== 0) {
+      registers.pc = address
+    } else {
+      registers.pc += instruction.size
     }
     registers[addressRegister] -= 1
-    registers.pc += instruction.size
   },
   'mfcr': (instruction) => {
     // Move From Core Register
@@ -285,7 +286,7 @@ module.exports = {
     // da da           mov        d15,#0xda
     const destinationRegister = instruction.operands[0]
     const secondOperand = instruction.operands[1]
-    const secondOperandType = determineOperandType(instruction.operands[2])
+    const secondOperandType = determineOperandType(secondOperand)
     const value = secondOperandType === 'register' ? registers[secondOperand] : parseInt(secondOperand, 10) // TODO: i don't know the initial values of registers
     debug(`${registers.pc.toString(16)} mov ${destinationRegister} ${secondOperand} ${value}`)
     registers[destinationRegister] = value // TODO: zero_extend/sign_extend or something
@@ -296,7 +297,7 @@ module.exports = {
     // a0 04           mov.a      a4,#0x0
     const destinationRegister = instruction.operands[0]
     const secondOperand = instruction.operands[1]
-    const secondOperandType = determineOperandType(instruction.operands[2])
+    const secondOperandType = determineOperandType(secondOperand)
     const value = secondOperandType === 'register' ? registers[secondOperand] : parseInt(secondOperand, 10) // TODO: i don't know the initial values of registers
     debug(`${registers.pc.toString(16)} mov.a ${destinationRegister} ${secondOperand} ${value}`)
     registers[destinationRegister] = value // TODO: zero_extend or something
@@ -325,7 +326,6 @@ module.exports = {
     const value = parseInt(instruction.operands[1], 10)
     debug(`${registers.pc.toString(16)} movh ${dataRegister} ${value}`)
     registers[dataRegister] = parseInt(`${value.toString(16)}0000`, 16)
-    registers.pc += instruction.size
     registers.pc += instruction.size
   },
   'movh.a': (instruction) => {

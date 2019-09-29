@@ -47,7 +47,7 @@ describe('instruction-handlers', () => {
   })
 
   describe('add', () => {
-          // Add the contents of data register D[a] to the contents of either data register D[b] (instruction format RR) or const9 (instruction format RC) and put the result in data register D[c]. The operands are treated as 32-bit integers, and the const9 value is sign-extended before the addition is performed.
+    // Add the contents of data register D[a] to the contents of either data register D[b] (instruction format RR) or const9 (instruction format RC) and put the result in data register D[c]. The operands are treated as 32-bit integers, and the const9 value is sign-extended before the addition is performed.
     it('Add', async () => {
       const input = 'c21f'
       const start = 0x80000000
@@ -61,7 +61,12 @@ describe('instruction-handlers', () => {
   describe('addi', () => {
     // Add the contents of data register D[a] to the value const16, and put the result in data register D[c]. The operands are treated as 32-bit signed integers. The value const16 is sign-extended before the addition is performed.
     it('Add Immediate', async () => {
-      throw new Error('TODO')
+      const input = '1b 00 0c 00'
+      const start = 0x80000000
+      const [instruction] = await disassembleInput(input)
+      instructionHandlers[instruction.mnemonic](instruction)
+      assert(registers.d0 === 0xC0)
+      assert(registers.pc === instruction.size)
     })
   })
 
@@ -75,7 +80,6 @@ describe('instruction-handlers', () => {
       assert(registers.d15 === -0x80000000)
       assert(registers.pc === instruction.size)
     })
-
   })
 
   describe('addsc.a', () => {
@@ -299,8 +303,13 @@ describe('instruction-handlers', () => {
 
   describe('movh', () => {
     // Move the value const16 to the most-significant half-word of data register D[c] and set the least-significant 16-bits to zero.
-    it('Move High', async () => {
-      throw new Error('TODO')
+    it.only('Move High', async () => {
+      const input = '7b 00 00 2d'
+      const start = 0x80000000
+      const [instruction] = await disassembleInput(input)
+      instructionHandlers[instruction.mnemonic](instruction)
+      assert(registers.d2 === 0xD0000000)
+      assert(registers.pc === instruction.size)
     })
   })
 
@@ -313,7 +322,7 @@ describe('instruction-handlers', () => {
 
   describe('mtcr', () => {
     // Move the value in data register D[a] to the Core Special Function Register (CSFR) selected by the value const16. The CSFR address is a const16 byte offset from the CSFR base address. It must be word-aligned (the leastsignificant two bits are zero). Non-aligned address have an undefined effect.
-   it(' Move To Core Register', async () => {
+    it(' Move To Core Register', async () => {
       throw new Error('TODO')
     })
   })

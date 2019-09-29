@@ -1,3 +1,4 @@
+const readline = require('readline')
 const registers = require('./registers')
 const instructionHandlers = require('./instruction-handlers')
 const { disassembleRange } = require('./disassemble')
@@ -13,11 +14,21 @@ const buildInstructionsMap = (functionRanges) => {
   const instructionsMap = {}
   for (let i = 0; i < functionRanges.length; ++i) {
     for (let x = 0; x < functionRanges[i].assembly.length; ++x) {
-      const address = parseInt(functionRanges[i].assembly[x].address, 16)
-      instructionsMap[address] = functionRanges[i].assembly[x]
+      instructionsMap[functionRanges[i].assembly[x].address] = functionRanges[i].assembly[x]
     }
   }
   return instructionsMap
+}
+
+const readLine = () => {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  })
+  return new Promise(resolve => rl.question('Paused', (ans) => {
+    rl.close()
+    resolve(ans)
+  }))
 }
 
 const run = async () => {
@@ -43,11 +54,12 @@ const run = async () => {
   const instructionsMap = buildInstructionsMap(functionRanges)
   registers.pc = 0x800003ac
   for (;;) {
-    const instruction = instructionsMap[registers.pc]
+    const instruction = instructionsMap[registers.pc.toString(16)]
     if (!instruction) {
       throw new Error(`Instruction not found at ${registers.pc.toString(16)}`)
     }
     handleInstruction(instruction)
+    await readLine()
   }
 }
 
