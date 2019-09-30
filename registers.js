@@ -2,10 +2,31 @@ const debug = require('debug')('registers')
 
 const handler = {
   get: function (obj, prop) {
-    return obj[prop]
+    if (prop === 'sp') {
+      prop = 'a10'
+    }
+    const value = obj[prop]
+    if (prop !== 'cr' && prop !== 'returnAddresses') {
+      if (value === undefined) {
+        throw new Error(`Attempt to read undefined from register ${prop}`)
+      }
+      if (isNaN(value)) {
+        throw new Error(`Attempt to read NaN from register ${prop}`)
+      }
+    }
+    return value
   },
   set: function (obj, prop, value) {
+    if (prop === 'sp') {
+      prop = 'a10'
+    }
     debug(`setRegister ${prop} ${value.toString(16)}`)
+    if (isNaN(value)) {
+      console.log(`Attempt to set register ${prop} to NaN`)
+    }
+    if (value === undefined) {
+      throw new Error(`Attempt to set register ${prop} to undefined`)
+    }
     obj[prop] = value
   }
 }
@@ -47,10 +68,11 @@ const registers =  new Proxy({
 
   'pc': 0x00000000,
   'cr': {
-    '65032': 0 // TODO: this is an assumption
+    '65032': 0, // TODO: this is an assumption
+    '65024': 0 // TODO: this is an assumption
   },
 
-  'returnAddress': 0x00000000
+  'returnAddresses': []
 }, handler)
 
 module.exports = registers

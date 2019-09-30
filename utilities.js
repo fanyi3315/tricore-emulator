@@ -23,6 +23,12 @@ exports.leastSignificantBits = (value, bits) => {
 exports.determineOperandType = (operand) => isNaN(parseInt(operand, 10)) ? 'register' : 'value'
 
 exports.parseAddressRegisterAndOffset = (operand) => {
-  const [_, addressRegister, offset] = operand.split(' ')[0].match(/\[(a\d*)\](-?\d*)/)
+  debug(`parseAddressRegisterAndOffset ${operand}`)
+    operand = operand.replace('sp', 'a10') // watch out for sp/a10 naming debacle
+  if (operand.match(/^\[(a\d*)\]$/)) {
+    return [ operand.replace('[', '').replace(']', ''), 0]
+  }
+  const addressRegisterAndOffset = operand.split(' ')[0]
+  const [_, addressRegister, offset] = addressRegisterAndOffset.match(/\[(a\d*)\](-?\d*)/)
   return [ addressRegister, parseInt(offset, 10) ]
 }

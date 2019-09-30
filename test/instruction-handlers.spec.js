@@ -83,7 +83,8 @@ describe('instruction-handlers', () => {
   })
 
   describe('addsc.a', () => {
-    // For ADDSC.A, left-shift the contents of data register D[a] by the amount specified by n, where n can be 0, 1, 2, or 3. Add that value to the contents of address register A[b] and put the result in address register A[c].
+    // For ADDSC.A, left-shift the contents of data register D[a] by the amount specified by n, where n can be 0, 1, 2, or 3.
+    // Add that value to the contents of address register A[b] and put the result in address register A[c].
     it('Add Scaled Index to Address', async () => {
       throw new Error('TODO')
     })

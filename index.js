@@ -32,14 +32,6 @@ const readLine = () => {
   }))
 }
 
-const validateRegisters = () => {
-  Object.keys(registers).forEach(key => {
-    if (registers[key] === undefined) {
-      throw new Error(`${key} is undefined`)
-    }
-  })
-}
-
 let debuggerTripped = false
 
 const run = async () => {
@@ -69,15 +61,22 @@ const run = async () => {
     if (!instruction) {
       throw new Error(`Instruction not found at ${registers.pc.toString(16)}`)
     }
+    // Patch bad rasm2 decodings
+    if (instruction.hex === '4d80e0ff') {
+      instruction.assembly = 'mfcr d15, 65032'
+      instruction.operands = ['d15', '65032']
+    } else if (instruction.hex === '4d00e00f') {
+      instruction.assembly = 'mfcr d15, 65024'
+      instruction.operands = ['d15', '65024']
+    }
     debug(JSON.stringify(instruction))
-    if (registers.pc === 0x80000584) {
-      //debuggerTripped = true
+    if (registers.pc === 0x800004ca) {
+      debuggerTripped = true
     }
     if (debuggerTripped) {
       await readLine()
     }
     handleInstruction(instruction)
-    validateRegisters()
   }
 }
 
