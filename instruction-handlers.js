@@ -57,11 +57,19 @@ module.exports = {
     // and        d0,d1
     // and        d15,#0x3
     const destinationRegister = instruction.operands[0]
-    const sourceRegister = instruction.operands[1]
-    const valueA = registers[destinationRegister]
-    const valueB = registers[sourceRegister]
-    debug(`${registers.pc.toString(16)} and ${destinationRegister} ${sourceRegister} ${valueA.toString(16)} ${valueB.toString(16)}`)
-    registers[destinationRegister] = valueA & valueB
+    const secondOperandType = determineOperandType(instruction.operands[1])
+    if (secondOperandType === 'value') {
+      const valueA = registers[destinationRegister]
+      const valueB = parseInt(instruction.operands[1])
+      debug(`${registers.pc.toString(16)} and ${destinationRegister} ${valueA.toString(16)} ${valueB.toString(16)}`)
+      registers[destinationRegister] = valueA & valueB
+    } else {
+      const sourceRegister = instruction.operands[1]
+      const valueA = registers[destinationRegister]
+      const valueB = registers[sourceRegister]
+      debug(`${registers.pc.toString(16)} and ${destinationRegister} ${sourceRegister} ${valueA.toString(16)} ${valueB.toString(16)}`)
+      registers[destinationRegister] = valueA & valueB
+    }
     registers.pc += instruction.size
   },
   'and.ne': (instruction) => {
@@ -128,11 +136,9 @@ module.exports = {
   'jeq': (instruction) => {
     // jeq        d15,#0x2,LAB_800007de
     const register = instruction.operands[0]
-    const secondOperandType = determineOperandType(instruction.operands[1])
-    if (secondOperandType !== 'value') {
-      throw new Error('TODO')
-    }
-    const value = signExtend(parseInt(instruction.operands[1]), 'byte')
+    const secondOperand = instruction.operands[1]
+    const secondOperandType = determineOperandType(secondOperand)
+    const value = secondOperandType === 'value' ? signExtend(parseInt(secondOperand), 'byte') : signExtend(registers[secondOperand], 'byte')
     const address = parseInt(instruction.operands[2])
     debug(`${registers.pc.toString(16)} jeq ${register} ${value.toString(16)} ${address.toString(16)}`)
     if (registers[register] === value) {
@@ -197,8 +203,14 @@ module.exports = {
   },
   'jnz': (instruction) => {
     // jnz        d4,LAB_8000063e
-    throw new Error('TODO')
-    registers.pc += instruction.size
+    const register = instruction.operands[0]
+    const address = parseInt(instruction.operands[1])
+    debug(`${registers.pc.toString(16)} jnz ${register} ${address.toString(16)}`)
+    if (registers[register] !== 0) {
+      registers.pc = address
+    } else {
+      registers.pc += instruction.size
+    }
   },
   'jz': (instruction) => {
     // jz         d2,LAB_80000766
@@ -421,7 +433,7 @@ module.exports = {
     const dataRegister = instruction.operands[0]
     const value = parseInt(instruction.operands[1], 10)
     debug(`${registers.pc.toString(16)} movh ${dataRegister} ${value.toString(16)}`)
-    registers[dataRegister] = zeroExtend(value, 'word')
+    registers[dataRegister] = parseInt(`${value.toString(16)}0000`, 16)
     registers.pc += instruction.size
   },
   'movh.a': (instruction) => {

@@ -14,7 +14,7 @@ const handler = {
         throw new Error(`Attempt to read NaN from register ${prop}`)
       }
     }
-    if (prop !== 'pc') {
+    if (prop !== 'pc' && prop !== 'returnAddresses') {
       debug(`getRegister ${prop} ${value.toString(16)}`)
     }
     return value
