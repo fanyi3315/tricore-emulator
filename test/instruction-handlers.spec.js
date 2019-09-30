@@ -228,6 +228,12 @@ describe('instruction-handlers', () => {
   describe('ld.bu', () => {
     // Load the byte contents of the memory location specified by the addressing mode, sign-extended or zero-extended, into data register D[a].
     it('Load Byte Unsigned', async () => {
+      const input = '0c f0'
+      const start = 0x80000000
+      const [instruction] = await disassembleInput(input)
+      instructionHandlers[instruction.mnemonic](instruction)
+      assert(registers.d15 === 0xD0000000)
+      assert(registers.pc === instruction.size)
       throw new Error('TODO')
     })
   })
@@ -249,7 +255,13 @@ describe('instruction-handlers', () => {
   describe('lea', () => {
     // Compute the absolute (effective) address defined by the addressing mode and put the result in address register A[a].
     it('Load Effective Address', async () => {
-      throw new Error('TODO')
+      const input = 'd9 ff 00 08'
+      const start = 0x80000000
+      registers.a15 = 0x80020000
+      const [instruction] = await disassembleInput(input)
+      instructionHandlers[instruction.mnemonic](instruction)
+      assert(registers.a15 === 0x80028000)
+      assert(registers.pc === instruction.size)
     })
   })
 
@@ -304,7 +316,7 @@ describe('instruction-handlers', () => {
 
   describe('movh', () => {
     // Move the value const16 to the most-significant half-word of data register D[c] and set the least-significant 16-bits to zero.
-    it.only('Move High', async () => {
+    it('Move High', async () => {
       const input = '7b 00 00 2d'
       const start = 0x80000000
       const [instruction] = await disassembleInput(input)
@@ -317,7 +329,12 @@ describe('instruction-handlers', () => {
   describe('movh.a', () => {
     // Move the value const16 to the most-significant half-word of address register A[c] and set the least-significant 16-bits to zero.
     it('Move High to Address', async () => {
-      throw new Error('TODO')
+      const input = '91 20 00 f8'
+      const start = 0x80000000
+      const [instruction] = await disassembleInput(input)
+      instructionHandlers[instruction.mnemonic](instruction)
+      assert(registers.a15 === 0x80020000)
+      assert(registers.pc === instruction.size)
     })
   })
 

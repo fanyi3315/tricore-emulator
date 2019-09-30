@@ -14,13 +14,18 @@ const handler = {
         throw new Error(`Attempt to read NaN from register ${prop}`)
       }
     }
+    if (prop !== 'pc') {
+      debug(`getRegister ${prop} ${value.toString(16)}`)
+    }
     return value
   },
   set: function (obj, prop, value) {
     if (prop === 'sp') {
       prop = 'a10'
     }
-    debug(`setRegister ${prop} ${value.toString(16)}`)
+    if (prop !== 'pc') {
+      debug(`setRegister ${prop} ${value.toString(16)}`)
+    }
     if (isNaN(value)) {
       console.log(`Attempt to set register ${prop} to NaN`)
     }

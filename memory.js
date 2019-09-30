@@ -4,6 +4,12 @@ const firmware = require('./firmware')
 const baseAddress = 0x80000000
 
 const memory = {
+  '80000008': firmware[0x80000008 - baseAddress],
+  '80000010': firmware[0x80000010 - baseAddress],
+  '80000011': firmware[0x80000011 - baseAddress],
+  '80000012': firmware[0x80000012 - baseAddress],
+  '80000013': firmware[0x80000013 - baseAddress],
+
   '80010100': firmware[0x80010100 - baseAddress],
   '80010101': firmware[0x80010101 - baseAddress],
   '80010102': firmware[0x80010102 - baseAddress],
@@ -69,6 +75,18 @@ const memory = {
   '8001013e': firmware[0x8001013e - baseAddress],
   '8001013f': firmware[0x8001013f - baseAddress],
 
+  '80014000': firmware[0x80014000 - baseAddress],
+  '80014010': firmware[0x80014010 - baseAddress],
+  '80014011': firmware[0x80014011 - baseAddress],
+  '80014012': firmware[0x80014012 - baseAddress],
+  '80014013': firmware[0x80014013 - baseAddress],
+  '80014018': firmware[0x80014018 - baseAddress],
+
+  '800171bc': firmware[0x800171bc - baseAddress],
+  '800171bd': firmware[0x800171bd - baseAddress],
+  '800171be': firmware[0x800171be - baseAddress],
+  '800171bf': firmware[0x800171bcf - baseAddress],
+
   '80018000': firmware[0x80018000 - baseAddress],
   '80018008': firmware[0x80018008 - baseAddress],
   '80018009': firmware[0x80018009 - baseAddress],
@@ -94,7 +112,6 @@ exports.getMemory = (address, size) => {
     const byte1 = memory[address.toString(16)]
     const byte2 = memory[(address + 1).toString(16)]
     return (byte2 << 8) + byte1
-    throw new Error('TODO')
   } else if (size === 'byte') {
     return memory[address.toString(16)]
   } else {

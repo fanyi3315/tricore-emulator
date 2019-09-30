@@ -70,8 +70,8 @@ const run = async () => {
       instruction.operands = ['d15', '65024']
     }
     debug(JSON.stringify(instruction))
-    if (registers.pc === 0x800004ca) {
-      debuggerTripped = true
+    if (registers.pc === 0x80000594) {
+      //debuggerTripped = true
     }
     if (debuggerTripped) {
       await readLine()
