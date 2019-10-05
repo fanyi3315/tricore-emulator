@@ -1,4 +1,5 @@
 #include "instruction_handlers.h"
+#include "log.h"
 #include "parson/parson.h"
 #include "registers.h"
 #include <stdint.h>
@@ -136,6 +137,7 @@ int main(int argc, char *argv[]) {
               formatted_address);
       exit(1);
     }
+    log_instruction(instruction);
     handle_instruction(instruction);
   }
   json_value_free(root_value);

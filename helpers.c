@@ -1,4 +1,5 @@
 #include "parson/parson.h"
+#include "registers.h"
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -16,4 +17,10 @@ const char *parse_operand_as_string(JSON_Object *instruction,
   JSON_Array *operands;
   operands = json_object_get_array(instruction, "operands");
   return json_array_get_string(operands, operand_index);
+}
+
+void progress_program_counter(JSON_Object *instruction) {
+  uint32_t instruction_size;
+  instruction_size = json_object_get_number(instruction, "size");
+  set_register("pc", get_register("pc") + instruction_size);
 }
