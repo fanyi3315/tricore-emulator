@@ -1,11 +1,19 @@
+#include "parson/parson.h"
 #include <stdint.h>
 #include <stdlib.h>
-#include "parson/parson.h"
 
-uint32_t parse_first_opperand_as_address(JSON_Object *instruction) {
+uint32_t parse_operand_as_uint32_t(JSON_Object *instruction,
+                                   size_t operand_index, size_t base) {
   JSON_Array *operands;
   const char *operand;
   operands = json_object_get_array(instruction, "operands");
-  operand = json_array_get_string(operands, 0);
-  return strtol(operand, NULL, 16);
+  operand = json_array_get_string(operands, operand_index);
+  return strtol(operand, NULL, base);
+}
+
+const char *parse_operand_as_string(JSON_Object *instruction,
+                                    size_t operand_index) {
+  JSON_Array *operands;
+  operands = json_object_get_array(instruction, "operands");
+  return json_array_get_string(operands, operand_index);
 }

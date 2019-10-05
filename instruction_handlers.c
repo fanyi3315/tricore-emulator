@@ -1,8 +1,8 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "helpers.h"
 #include "parson/parson.h"
 #include "registers.h"
-#include "helpers.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 void handle_add_instruction(JSON_Object *instruction) {
   // Declare variables
@@ -101,9 +101,10 @@ void handle_call_instruction(JSON_Object *instruction) {
   // Get program counter
   pc = get_register("pc");
   printf("%08x: %s\n", pc, __func__);
-  // save the caller’s registers upper context in a dynamically-allocated save area.
+  // save the caller’s registers upper context in a dynamically-allocated save
+  // area.
   save_upper_context(instruction);
-  address = parse_first_opperand_as_address(instruction);
+  address = parse_operand_as_uint32_t(instruction, 0, 10);
   printf("\t\t%08x\n", address);
   // move to operand
   set_register("pc", address);
@@ -428,12 +429,15 @@ void handle_mfcr_instruction(JSON_Object *instruction) {
   // Declare variables
   uint32_t pc;
   uint32_t instruction_size;
+  const char *data_register_name;
+  uint16_t core_register_name;
   // Get program counter
   pc = get_register("pc");
   printf("%08x: %s\n", pc, __func__);
   // Perform operation
-  fprintf(stderr, "TODO\n");
-  exit(1);
+  data_register_name = parse_operand_as_string(instruction, 0);
+  core_register_name = parse_operand_as_uint32_t(instruction, 1, 10);
+  set_register(data_register_name, get_core_register(core_register_name));
   // Move on to next instruction
   instruction_size = json_object_get_number(instruction, "size");
   set_register("pc", pc + instruction_size);
@@ -736,12 +740,15 @@ void handle_suba_instruction(JSON_Object *instruction) {
   // Declare variables
   uint32_t pc;
   uint32_t instruction_size;
+  const char *register_name;
+  uint32_t amount;
   // Get program counter
   pc = get_register("pc");
   printf("%08x: %s\n", pc, __func__);
   // Perform operation
-  fprintf(stderr, "TODO\n");
-  exit(1);
+  register_name = parse_operand_as_string(instruction, 0);
+  amount = parse_operand_as_uint32_t(instruction, 1, 16);
+  set_register(register_name, get_register(register_name) - amount);
   // Move on to next instruction
   instruction_size = json_object_get_number(instruction, "size");
   set_register("pc", pc + instruction_size);

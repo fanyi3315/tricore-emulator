@@ -43,11 +43,11 @@
     "address": "80000252",
     "size": 4,
     "hex": "4d00e00f",
-    "assembly": "mfcr d0, $pcxi",
+    "assembly": "mfcr d0, 65024",
     "mnemonic": "mfcr",
     "operands": [
       "d0",
-      "$pcxi"
+      "65024"
     ]
   },
   "80000256": {
@@ -64,10 +64,10 @@
     "address": "80000260",
     "size": 4,
     "hex": "cd00e00f",
-    "assembly": "mtcr $pcxi, d0",
+    "assembly": "mtcr 65024, d0",
     "mnemonic": "mtcr",
     "operands": [
-      "$pcxi",
+      "65024",
       "d0"
     ]
   },
@@ -2470,11 +2470,11 @@
     "address": "800002e2",
     "size": 4,
     "hex": "4d80e0ff",
-    "assembly": "mfcr d15, $pc",
+    "assembly": "mfcr d15, 65032",
     "mnemonic": "mfcr",
     "operands": [
       "d15",
-      "$pc"
+      "65032"
     ]
   },
   "800002e6": {
@@ -2824,11 +2824,11 @@
     "address": "800003ae",
     "size": 4,
     "hex": "4d80e0ff",
-    "assembly": "mfcr d15, $pc",
+    "assembly": "mfcr d15, 65032",
     "mnemonic": "mfcr",
     "operands": [
       "d15",
-      "$pc"
+      "65032"
     ]
   },
   "800003b2": {

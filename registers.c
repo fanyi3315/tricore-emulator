@@ -1,8 +1,8 @@
+#include "parson/parson.h"
 #include <stdint.h>
-#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include "parson/parson.h"
+#include <string.h>
 
 /* Address registers */
 static uint32_t a0 = 0;
@@ -58,6 +58,17 @@ static uint32_t save_area_d14 = 0;
 static uint32_t save_area_d15 = 0;
 /* Save area pc */
 static uint32_t save_area_pc = 0;
+/* Core registers */
+static uint32_t core_register_fe08 = 0;
+
+uint32_t get_core_register(uint16_t name) {
+  if (name == 0xfe08) {
+    return core_register_fe08;
+  } else {
+    fprintf(stderr, "unknown core register: %08x\n", name);
+    exit(1);
+  }
+}
 
 uint32_t get_register(const char *name) {
   if (strcmp(name, "a0") == 0) {
@@ -80,7 +91,7 @@ uint32_t get_register(const char *name) {
     return a8;
   } else if (strcmp(name, "a9") == 0) {
     return a9;
-  } else if (strcmp(name, "a10") == 0) {
+  } else if (strcmp(name, "a10") == 0 || strcmp(name, "sp") == 0) {
     return a10;
   } else if (strcmp(name, "a11") == 0) {
     return a11;
@@ -184,7 +195,7 @@ void set_register(const char *name, uint32_t value) {
     a8 = value;
   } else if (strcmp(name, "a9") == 0) {
     a9 = value;
-  } else if (strcmp(name, "a10") == 0) {
+  } else if (strcmp(name, "a10") == 0 || strcmp(name, "sp") == 0) {
     a10 = value;
   } else if (strcmp(name, "a11") == 0) {
     a11 = value;

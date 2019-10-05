@@ -1,10 +1,10 @@
+#include "instruction_handlers.h"
+#include "parson/parson.h"
+#include "registers.h"
+#include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdint.h>
-#include "parson/parson.h"
-#include "instruction_handlers.h"
-#include "registers.h"
 
 void handle_instruction(JSON_Object *instruction) {
   const char *mnemonic;
@@ -132,7 +132,8 @@ int main(int argc, char *argv[]) {
     sprintf(formatted_address, "%08x", program_counter);
     instruction = json_object_get_object(instructions, formatted_address);
     if (instruction == NULL) {
-      fprintf(stderr, "instruction not found at address %s\n", formatted_address);
+      fprintf(stderr, "instruction not found at address %s\n",
+              formatted_address);
       exit(1);
     }
     handle_instruction(instruction);
