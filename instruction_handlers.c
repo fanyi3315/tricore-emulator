@@ -38,12 +38,18 @@ void handle_addih_instruction(JSON_Object *instruction) {
   // Declare variables
   uint32_t pc;
   uint32_t instruction_size;
+  const char *destination_register;
+  const char *source_register;
+  uint16_t value;
   // Get program counter
   pc = get_register("pc");
   printf("%08x: %s\n", pc, __func__);
   // Perform operation
-  fprintf(stderr, "TODO\n");
-  exit(1);
+  destination_register = parse_operand_as_string(instruction, 0);
+  source_register = parse_operand_as_string(instruction, 1);
+  value = parse_operand_as_uint32_t(instruction, 2, 10);
+  set_register(destination_register,
+               get_register(source_register) + (value << 16));
   // Move on to next instruction
   instruction_size = json_object_get_number(instruction, "size");
   set_register("pc", pc + instruction_size);
