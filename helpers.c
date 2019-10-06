@@ -4,6 +4,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int8_t parse_operand_as_int8_t(JSON_Object *instruction, size_t operand_index,
+                               size_t base) {
+  JSON_Array *operands;
+  const char *operand;
+  operands = json_object_get_array(instruction, "operands");
+  operand = json_array_get_string(operands, operand_index);
+  return strtol(operand, NULL, base);
+}
+
+int32_t parse_operand_as_int32_t(JSON_Object *instruction, size_t operand_index,
+                                 size_t base) {
+  JSON_Array *operands;
+  const char *operand;
+  operands = json_object_get_array(instruction, "operands");
+  operand = json_array_get_string(operands, operand_index);
+  return strtol(operand, NULL, base);
+}
+
 uint32_t parse_operand_as_uint32_t(JSON_Object *instruction,
                                    size_t operand_index, size_t base) {
   JSON_Array *operands;

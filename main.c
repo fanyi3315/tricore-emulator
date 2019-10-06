@@ -3,6 +3,7 @@
 #include "memory.h"
 #include "parson/parson.h"
 #include "registers.h"
+#include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -124,6 +125,8 @@ int main(int argc, char *argv[]) {
   JSON_Object *instruction;
   uint32_t program_counter;
   char formatted_address[9];
+  char buf[16];
+  bool debugger_tripped = 0;
   // read instructions
   root_value = json_parse_file("input.json");
   instructions = json_value_get_object(root_value);
@@ -133,6 +136,13 @@ int main(int argc, char *argv[]) {
   for (;;) {
     program_counter = get_register("pc");
     sprintf(formatted_address, "%08x", program_counter);
+    if (strcmp(formatted_address, "800002f4") == 0) {
+      debugger_tripped = 1;
+    }
+    if (strcmp(formatted_address, "800005cc") == 0 ||
+        strcmp(formatted_address, "8000062c") == 0) {
+      // debugger_tripped = 0;
+    }
     instruction = json_object_get_object(instructions, formatted_address);
     if (instruction == NULL) {
       fprintf(stderr, "instruction not found at address %s\n",
@@ -142,6 +152,9 @@ int main(int argc, char *argv[]) {
     log_instruction(instruction);
     log_registers();
     handle_instruction(instruction);
+    if (debugger_tripped) {
+      gets(buf);
+    }
   }
   json_value_free(root_value);
 }
