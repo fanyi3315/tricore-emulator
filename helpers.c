@@ -1,6 +1,7 @@
 #include "parson/parson.h"
 #include "registers.h"
 #include <stdint.h>
+#include <stdio.h>
 #include <stdlib.h>
 
 uint32_t parse_operand_as_uint32_t(JSON_Object *instruction,
@@ -23,4 +24,13 @@ void progress_program_counter(JSON_Object *instruction) {
   uint32_t instruction_size;
   instruction_size = json_object_get_number(instruction, "size");
   set_register("pc", get_register("pc") + instruction_size);
+}
+
+uint8_t extract_bit(uint32_t value, size_t start, size_t end) {
+  if (start == 0 && end == 1) {
+    return (value & (1 << 1)) >> 1;
+  } else {
+    fprintf(stderr, "TODO %02x %02x\n", start, end);
+    exit(1);
+  }
 }

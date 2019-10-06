@@ -138,6 +138,7 @@ int main(int argc, char *argv[]) {
       exit(1);
     }
     log_instruction(instruction);
+    log_registers();
     handle_instruction(instruction);
   }
   json_value_free(root_value);
