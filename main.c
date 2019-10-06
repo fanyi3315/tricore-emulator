@@ -1,5 +1,6 @@
 #include "instruction_handlers.h"
 #include "log.h"
+#include "memory.h"
 #include "parson/parson.h"
 #include "registers.h"
 #include <stdint.h>
@@ -127,6 +128,7 @@ int main(int argc, char *argv[]) {
   root_value = json_parse_file("input.json");
   instructions = json_value_get_object(root_value);
   // kickoff execution
+  init_memory();
   set_register("pc", 0x800003ac);
   for (;;) {
     program_counter = get_register("pc");

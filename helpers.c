@@ -26,11 +26,11 @@ void progress_program_counter(JSON_Object *instruction) {
   set_register("pc", get_register("pc") + instruction_size);
 }
 
-uint8_t extract_bit(uint32_t value, size_t start, size_t end) {
-  if (start == 0 && end == 1) {
+uint8_t extract_bit(uint32_t value, uint8_t start, uint8_t width) {
+  if (start == 0x00 && width == 0x01) {
     return (value & (1 << 1)) >> 1;
   } else {
-    fprintf(stderr, "TODO %02x %02x\n", start, end);
+    fprintf(stderr, "TODO %02x %02x\n", start, width);
     exit(1);
   }
 }

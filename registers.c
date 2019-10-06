@@ -4,6 +4,27 @@
 #include <stdlib.h>
 #include <string.h>
 
+struct save_area {
+  uint32_t a10;
+  uint32_t a11;
+  uint32_t a12;
+  uint32_t a13;
+  uint32_t a14;
+  uint32_t a15;
+  uint32_t d8;
+  uint32_t d9;
+  uint32_t d10;
+  uint32_t d11;
+  uint32_t d12;
+  uint32_t d13;
+  uint32_t d14;
+  uint32_t d15;
+  uint32_t pc;
+};
+
+static struct save_area save_areas[16];
+static size_t save_area_index = 0;
+
 /* Address registers */
 static uint32_t a0 = 0;
 static uint32_t a1 = 0;
@@ -40,32 +61,38 @@ static uint32_t d14 = 0;
 static uint32_t d15 = 0;
 /* Program counter */
 static uint32_t pc = 0;
-/* Save area address registers */
-static uint32_t save_area_a10 = 0;
-static uint32_t save_area_a11 = 0;
-static uint32_t save_area_a12 = 0;
-static uint32_t save_area_a13 = 0;
-static uint32_t save_area_a14 = 0;
-static uint32_t save_area_a15 = 0;
-/* Save area data registers */
-static uint32_t save_area_d8 = 0;
-static uint32_t save_area_d9 = 0;
-static uint32_t save_area_d10 = 0;
-static uint32_t save_area_d11 = 0;
-static uint32_t save_area_d12 = 0;
-static uint32_t save_area_d13 = 0;
-static uint32_t save_area_d14 = 0;
-static uint32_t save_area_d15 = 0;
-/* Save area pc */
-static uint32_t save_area_pc = 0;
 /* Core registers */
 static uint32_t core_register_fe08 = 0;
+static uint32_t core_register_fe00 = 0;
+static uint32_t core_register_fe3c = 0;
+static uint32_t core_register_fe38 = 0;
 
 uint32_t get_core_register(uint16_t name) {
   if (name == 0xfe08) {
     return core_register_fe08;
+  } else if (name == 0xfe00) {
+    return core_register_fe00;
+  } else if (name == 0xfe3c) {
+    return core_register_fe3c;
+  } else if (name == 0xfe38) {
+    return core_register_fe38;
   } else {
-    fprintf(stderr, "unknown core register: %08x\n", name);
+    fprintf(stderr, "unable to get unknown core register: %08x\n", name);
+    exit(1);
+  }
+}
+
+void set_core_register(uint16_t name, uint32_t value) {
+  if (name == 0xfe08) {
+    core_register_fe08 = value;
+  } else if (name == 0xfe00) {
+    core_register_fe00 = value;
+  } else if (name == 0xfe3c) {
+    core_register_fe3c = value;
+  } else if (name == 0xfe38) {
+    core_register_fe38 = value;
+  } else {
+    fprintf(stderr, "unable to set core register: %08x\n", name);
     exit(1);
   }
 }
@@ -135,36 +162,6 @@ uint32_t get_register(const char *name) {
     return d14;
   } else if (strcmp(name, "d15") == 0) {
     return d15;
-  } else if (strcmp(name, "save_area_a10") == 0) {
-    return save_area_a10;
-  } else if (strcmp(name, "save_area_a11") == 0) {
-    return save_area_a11;
-  } else if (strcmp(name, "save_area_a12") == 0) {
-    return save_area_a12;
-  } else if (strcmp(name, "save_area_a13") == 0) {
-    return save_area_a13;
-  } else if (strcmp(name, "save_area_a14") == 0) {
-    return save_area_a14;
-  } else if (strcmp(name, "save_area_a15") == 0) {
-    return save_area_a15;
-  } else if (strcmp(name, "save_area_d8") == 0) {
-    return save_area_d8;
-  } else if (strcmp(name, "save_area_d9") == 0) {
-    return save_area_d9;
-  } else if (strcmp(name, "save_area_d10") == 0) {
-    return save_area_d10;
-  } else if (strcmp(name, "save_area_d11") == 0) {
-    return save_area_d11;
-  } else if (strcmp(name, "save_area_d12") == 0) {
-    return save_area_d12;
-  } else if (strcmp(name, "save_area_d13") == 0) {
-    return save_area_d13;
-  } else if (strcmp(name, "save_area_d14") == 0) {
-    return save_area_d14;
-  } else if (strcmp(name, "save_area_d15") == 0) {
-    return save_area_d15;
-  } else if (strcmp(name, "save_area_pc") == 0) {
-    return save_area_pc;
   } else if (strcmp(name, "pc") == 0) {
     return pc;
   } else {
@@ -241,36 +238,6 @@ void set_register(const char *name, uint32_t value) {
     d15 = value;
   } else if (strcmp(name, "pc") == 0) {
     pc = value;
-  } else if (strcmp(name, "save_area_a10") == 0) {
-    save_area_a10 = value;
-  } else if (strcmp(name, "save_area_a11") == 0) {
-    save_area_a11 = value;
-  } else if (strcmp(name, "save_area_a12") == 0) {
-    save_area_a12 = value;
-  } else if (strcmp(name, "save_area_a13") == 0) {
-    save_area_a13 = value;
-  } else if (strcmp(name, "save_area_a14") == 0) {
-    save_area_a14 = value;
-  } else if (strcmp(name, "save_area_a15") == 0) {
-    save_area_a15 = value;
-  } else if (strcmp(name, "save_area_d8") == 0) {
-    save_area_d8 = value;
-  } else if (strcmp(name, "save_area_d9") == 0) {
-    save_area_d9 = value;
-  } else if (strcmp(name, "save_area_d10") == 0) {
-    save_area_d10 = value;
-  } else if (strcmp(name, "save_area_d11") == 0) {
-    save_area_d11 = value;
-  } else if (strcmp(name, "save_area_d12") == 0) {
-    save_area_d12 = value;
-  } else if (strcmp(name, "save_area_d13") == 0) {
-    save_area_d13 = value;
-  } else if (strcmp(name, "save_area_d14") == 0) {
-    save_area_d14 = value;
-  } else if (strcmp(name, "save_area_d15") == 0) {
-    save_area_d15 = value;
-  } else if (strcmp(name, "save_area_pc") == 0) {
-    save_area_pc = value;
   } else {
     fprintf(stderr, "attempt to set unknown register: %s\n", name);
     exit(1);
@@ -278,41 +245,45 @@ void set_register(const char *name, uint32_t value) {
 }
 
 void restore_upper_context() {
-  set_register("a10", get_register("save_area_a10"));
-  set_register("a11", get_register("save_area_a11"));
-  set_register("a12", get_register("save_area_a12"));
-  set_register("a13", get_register("save_area_a13"));
-  set_register("a14", get_register("save_area_a14"));
-  set_register("a15", get_register("save_area_a15"));
-  set_register("d8", get_register("save_area_d8"));
-  set_register("d9", get_register("save_area_d9"));
-  set_register("d10", get_register("save_area_d10"));
-  set_register("d11", get_register("save_area_d11"));
-  set_register("d12", get_register("save_area_d12"));
-  set_register("d13", get_register("save_area_d13"));
-  set_register("d14", get_register("save_area_d14"));
-  set_register("d15", get_register("save_area_d15"));
-  set_register("pc", get_register("save_area_pc"));
+  save_area_index--;
+  printf("restore_upper_context: %02x\n", save_area_index);
+  set_register("a10", save_areas[save_area_index].a10);
+  set_register("a11", save_areas[save_area_index].a11);
+  set_register("a12", save_areas[save_area_index].a12);
+  set_register("a13", save_areas[save_area_index].a13);
+  set_register("a14", save_areas[save_area_index].a14);
+  set_register("a15", save_areas[save_area_index].a15);
+  set_register("d8", save_areas[save_area_index].d8);
+  set_register("d9", save_areas[save_area_index].d9);
+  set_register("d10", save_areas[save_area_index].d10);
+  set_register("d11", save_areas[save_area_index].d11);
+  set_register("d12", save_areas[save_area_index].d12);
+  set_register("d13", save_areas[save_area_index].d13);
+  set_register("d14", save_areas[save_area_index].d14);
+  set_register("d15", save_areas[save_area_index].d15);
+  set_register("pc", save_areas[save_area_index].pc);
 }
 
 void save_upper_context(JSON_Object *instruction) {
+  printf("save_upper_context: %02x\n", save_area_index);
   uint32_t instruction_size;
   uint32_t pc;
   pc = get_register("pc");
-  set_register("save_area_a10", get_register("a10"));
-  set_register("save_area_a11", get_register("a11"));
-  set_register("save_area_a12", get_register("a12"));
-  set_register("save_area_a13", get_register("a13"));
-  set_register("save_area_a14", get_register("a14"));
-  set_register("save_area_a15", get_register("a15"));
-  set_register("save_area_d8", get_register("d8"));
-  set_register("save_area_d9", get_register("d9"));
-  set_register("save_area_d10", get_register("d10"));
-  set_register("save_area_d11", get_register("d11"));
-  set_register("save_area_d12", get_register("d12"));
-  set_register("save_area_d13", get_register("d13"));
-  set_register("save_area_d14", get_register("d14"));
-  set_register("save_area_d15", get_register("d15"));
   instruction_size = json_object_get_number(instruction, "size");
-  set_register("save_area_pc", pc + instruction_size);
+  save_areas[save_area_index].a10 = get_register("a10");
+  save_areas[save_area_index].a11 = get_register("a11");
+  save_areas[save_area_index].a12 = get_register("a12");
+  save_areas[save_area_index].a13 = get_register("a13");
+  save_areas[save_area_index].a14 = get_register("a14");
+  save_areas[save_area_index].a15 = get_register("a15");
+  save_areas[save_area_index].d8 = get_register("d8");
+  save_areas[save_area_index].d9 = get_register("d9");
+  save_areas[save_area_index].d10 = get_register("d10");
+  save_areas[save_area_index].d11 = get_register("d11");
+  save_areas[save_area_index].d12 = get_register("d12");
+  save_areas[save_area_index].d13 = get_register("d13");
+  save_areas[save_area_index].d14 = get_register("d14");
+  save_areas[save_area_index].d15 = get_register("d15");
+  save_areas[save_area_index].pc = pc + instruction_size;
+  save_area_index++;
 }
