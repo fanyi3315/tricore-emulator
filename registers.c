@@ -23,7 +23,7 @@ struct save_area {
 };
 
 static struct save_area save_areas[16];
-static size_t save_area_index = 0;
+static uint8_t save_area_index = 0;
 
 /* Address registers */
 static uint32_t a0 = 0;
@@ -36,7 +36,7 @@ static uint32_t a6 = 0;
 static uint32_t a7 = 0;
 static uint32_t a8 = 0;
 static uint32_t a9 = 0;
-static uint32_t a10 = 0;
+static uint32_t a10 = 0xc0000008; // hack
 static uint32_t a11 = 0;
 static uint32_t a12 = 0;
 static uint32_t a13 = 0;
@@ -247,7 +247,7 @@ void set_register(const char *name, uint32_t value) {
 void restore_upper_context() {
   save_area_index--;
   printf("restore_upper_context: %02x\n", save_area_index);
-  set_register("a10", save_areas[save_area_index].a10);
+  set_register("sp", save_areas[save_area_index].a10);
   set_register("a11", save_areas[save_area_index].a11);
   set_register("a12", save_areas[save_area_index].a12);
   set_register("a13", save_areas[save_area_index].a13);
@@ -270,7 +270,7 @@ void save_upper_context(JSON_Object *instruction) {
   uint32_t pc;
   pc = get_register("pc");
   instruction_size = json_object_get_number(instruction, "size");
-  save_areas[save_area_index].a10 = get_register("a10");
+  save_areas[save_area_index].a10 = get_register("sp");
   save_areas[save_area_index].a11 = get_register("a11");
   save_areas[save_area_index].a12 = get_register("a12");
   save_areas[save_area_index].a13 = get_register("a13");

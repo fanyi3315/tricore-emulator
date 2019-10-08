@@ -8,6 +8,7 @@ void log_instruction(JSON_Object *instruction) {
       json_serialize_to_string(json_object_get_wrapping_value(instruction));
   printf("instruction: %s\n", serialized_instruction);
   json_free_serialized_string(serialized_instruction);
+  fflush(NULL);
 }
 
 void log_registers() {
@@ -35,4 +36,5 @@ void log_registers() {
   printf("registers: d12 = %08x d13 = %08x d14 = %08x d15 = %08x\n",
          get_register("d12"), get_register("d13"), get_register("d14"),
          get_register("d15"));
+  fflush(NULL);
 }

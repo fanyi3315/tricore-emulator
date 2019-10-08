@@ -132,12 +132,12 @@ int main(int argc, char *argv[]) {
   instructions = json_value_get_object(root_value);
   // kickoff execution
   init_memory();
-  set_register("pc", 0x800003ac);
+  set_register("pc", 0x800004a4);
   for (;;) {
     program_counter = get_register("pc");
     sprintf(formatted_address, "%08x", program_counter);
-    if (strcmp(formatted_address, "800002f4") == 0) {
-      debugger_tripped = 1;
+    if (strcmp(formatted_address, "800004ee") == 0) {
+      // debugger_tripped = 1;
     }
     if (strcmp(formatted_address, "800005cc") == 0 ||
         strcmp(formatted_address, "8000062c") == 0) {
