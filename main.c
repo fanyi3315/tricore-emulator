@@ -132,7 +132,7 @@ int main(int argc, char *argv[]) {
   instructions = json_value_get_object(root_value);
   // kickoff execution
   init_memory();
-  set_register("pc", 0x800004a4);
+  set_register("pc", 0x80000238);
   for (;;) {
     program_counter = get_register("pc");
     sprintf(formatted_address, "%08x", program_counter);
