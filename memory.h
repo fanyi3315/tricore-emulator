@@ -9,3 +9,4 @@ uint16_t get_memory_uint16_t(uint32_t);
 uint32_t get_memory_uint32_t(uint32_t);
 
 void init_memory();
+void flush_memory();

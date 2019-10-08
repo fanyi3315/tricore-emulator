@@ -9,8 +9,8 @@
 static uint8_t *pmu0 = NULL;
 static uint8_t *pmu1 = NULL;
 static uint8_t *external_flash = NULL;
-static uint8_t *c00000000 = NULL;
-static uint8_t *d00000000 = NULL;
+static uint8_t *c0000000 = NULL;
+static uint8_t *d0000000 = NULL;
 
 void set_memory_uint8_t(uint32_t address, uint8_t value) {
   printf("set_memory_uint8_t: %08x %02x\n", address, value);
@@ -18,10 +18,10 @@ void set_memory_uint8_t(uint32_t address, uint8_t value) {
   bool valid_c0000000_range = address >= 0xc0000000 && address <= 0xc00fffff;
   if (valid_d0000000_range) {
     uint32_t offset = address - 0xd0000000;
-    d00000000[offset] = value;
+    d0000000[offset] = value;
   } else if (valid_c0000000_range) {
     uint32_t offset = address - 0xc0000000;
-    c00000000[offset] = value;
+    c0000000[offset] = value;
   } else {
     fprintf(stderr, "set_memory_uint8_t: TODO: %08x\n", address);
     exit(1);
@@ -34,12 +34,12 @@ void set_memory_uint16_t(uint32_t address, uint16_t value) {
   bool valid_c0000000_range = address >= 0xc0000000 && address <= 0xc00fffff;
   if (valid_d0000000_range) {
     uint32_t offset = address - 0xd0000000;
-    d00000000[offset] = value & 0xFF;
-    d00000000[offset + 1] = (value >> 8) & 0xFF;
+    d0000000[offset] = value & 0xFF;
+    d0000000[offset + 1] = (value >> 8) & 0xFF;
   } else if (valid_c0000000_range) {
     uint32_t offset = address - 0xc0000000;
-    c00000000[offset] = value & 0xFF;
-    c00000000[offset + 1] = (value >> 8) & 0xFF;
+    c0000000[offset] = value & 0xFF;
+    c0000000[offset + 1] = (value >> 8) & 0xFF;
   } else {
     fprintf(stderr, "set_memory_uint16_t: TODO: %08x\n", address);
     exit(1);
@@ -52,16 +52,16 @@ void set_memory_uint32_t(uint32_t address, uint32_t value) {
   bool valid_c0000000_range = address >= 0xc0000000 && address <= 0xc00fffff;
   if (valid_d0000000_range) {
     uint32_t offset = address - 0xd0000000;
-    d00000000[offset] = value & 0xFF;
-    d00000000[offset + 1] = (value >> 8) & 0xFF;
-    d00000000[offset + 2] = (value >> 16) & 0xFF;
-    d00000000[offset + 3] = (value >> 24) & 0xFF;
+    d0000000[offset] = value & 0xFF;
+    d0000000[offset + 1] = (value >> 8) & 0xFF;
+    d0000000[offset + 2] = (value >> 16) & 0xFF;
+    d0000000[offset + 3] = (value >> 24) & 0xFF;
   } else if (valid_c0000000_range) {
     uint32_t offset = address - 0xc0000000;
-    c00000000[offset] = value & 0xFF;
-    c00000000[offset + 1] = (value >> 8) & 0xFF;
-    c00000000[offset + 2] = (value >> 16) & 0xFF;
-    c00000000[offset + 3] = (value >> 24) & 0xFF;
+    c0000000[offset] = value & 0xFF;
+    c0000000[offset + 1] = (value >> 8) & 0xFF;
+    c0000000[offset + 2] = (value >> 16) & 0xFF;
+    c0000000[offset + 3] = (value >> 24) & 0xFF;
   } else {
     fprintf(stderr, "set_memory_uint32_t: TODO: %08x\n", address);
     exit(1);
@@ -99,7 +99,7 @@ uint16_t get_memory_uint16_t(uint32_t address) {
 }
 
 uint32_t get_memory_uint32_t(uint32_t address) {
-  fprintf(stderr, "get_memory_uint32_t: %08x\n", address);
+  printf("get_memory_uint32_t: %08x\n", address);
   if (address >= 0x80000000 && address <= 0x801FFFFF) {
     uint32_t offset = address - 0x80000000;
     return (pmu0[offset + 3] << 24) + (pmu0[offset + 2] << 16) +
@@ -127,6 +127,19 @@ void init_memory() {
   pmu1 = mmap(0, pmu1_s.st_size, PROT_READ, MAP_PRIVATE, pmu1_fd, 0);
   external_flash = mmap(0, external_flash_s.st_size, PROT_READ, MAP_PRIVATE,
                         external_flash_fd, 0);
-  c00000000 = malloc(0xFFFF);
-  d00000000 = malloc(0xFFFF);
+  c0000000 = calloc(1, 0xFFFF);
+  d0000000 = calloc(1, 0xFFFF);
+}
+
+void flush_memory() {
+  FILE *d0000000_fp;
+  FILE *c0000000_fp;
+  d0000000_fp = fopen("d0000000.bin", "w");
+  c0000000_fp = fopen("c0000000.bin", "w");
+  fwrite(d0000000, 1, 0xFFFF, d0000000_fp);
+  fwrite(c0000000, 1, 0xFFFF, c0000000_fp);
+  fflush(d0000000_fp);
+  fflush(c0000000_fp);
+  fclose(d0000000_fp);
+  fclose(c0000000_fp);
 }

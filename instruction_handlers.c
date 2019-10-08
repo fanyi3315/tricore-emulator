@@ -104,6 +104,7 @@ void handle_call_instruction(JSON_Object *instruction) {
 }
 
 void handle_calla_instruction(JSON_Object *instruction) {
+  flush_memory();
   fprintf(stderr, "TODO\n");
   exit(1);
   progress_program_counter(instruction);
