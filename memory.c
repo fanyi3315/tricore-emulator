@@ -81,6 +81,14 @@ uint8_t get_memory_uint8_t(uint32_t address) {
     uint32_t offset = address - 0x84000000;
     printf("get_memory_uint8_t external_flash %08x %08x\n", address, offset);
     return external_flash[offset];
+  } else if (address >= 0xc0000000 && address <= 0xc000ffff) {
+    uint32_t offset = address - 0xc0000000;
+    printf("get_memory_uint8_t cram %08x %08x\n", address, offset);
+    return cram[offset];
+  } else if (address >= 0xd0000000 && address <= 0xd000ffff) {
+    uint32_t offset = address - 0xd0000000;
+    printf("get_memory_uint8_t dram %08x %08x\n", address, offset);
+    return cram[offset];
   } else {
     fprintf(stderr, "get_memory_uint8_t: TODO: %08x\n", address);
     exit(1);

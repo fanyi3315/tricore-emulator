@@ -34,6 +34,8 @@ void handle_instruction(JSON_Object *instruction) {
     handle_dsync_instruction(instruction);
   } else if (strcmp(mnemonic, "extr.u") == 0) {
     handle_extru_instruction(instruction);
+  } else if (strcmp(mnemonic, "insert") == 0) {
+    handle_insert_instruction(instruction);
   } else if (strcmp(mnemonic, "isync") == 0) {
     handle_isync_instruction(instruction);
   } else if (strcmp(mnemonic, "j") == 0) {
@@ -58,6 +60,8 @@ void handle_instruction(JSON_Object *instruction) {
     handle_jzt_instruction(instruction);
   } else if (strcmp(mnemonic, "ld.a") == 0) {
     handle_lda_instruction(instruction);
+  } else if (strcmp(mnemonic, "ld.b") == 0) {
+    handle_ldb_instruction(instruction);
   } else if (strcmp(mnemonic, "ld.bu") == 0) {
     handle_ldbu_instruction(instruction);
   } else if (strcmp(mnemonic, "ld.hu") == 0) {
@@ -92,6 +96,8 @@ void handle_instruction(JSON_Object *instruction) {
     handle_nop_instruction(instruction);
   } else if (strcmp(mnemonic, "or") == 0) {
     handle_or_instruction(instruction);
+  } else if (strcmp(mnemonic, "or.or.t") == 0) {
+    handle_orort_instruction(instruction);
   } else if (strcmp(mnemonic, "or.ne") == 0) {
     handle_orne_instruction(instruction);
   } else if (strcmp(mnemonic, "ret") == 0) {
@@ -100,8 +106,10 @@ void handle_instruction(JSON_Object *instruction) {
     handle_sel_instruction(instruction);
   } else if (strcmp(mnemonic, "sh") == 0) {
     handle_sh_instruction(instruction);
-  } else if (strcmp(mnemonic, "sha") == 0) {
-    handle_sha_instruction(instruction);
+  } else if (strcmp(mnemonic, "sh") == 0) {
+    handle_sh_instruction(instruction);
+  } else if (strcmp(mnemonic, "sh.or.t") == 0) {
+    handle_short_instruction(instruction);
   } else if (strcmp(mnemonic, "st.a") == 0) {
     handle_sta_instruction(instruction);
   } else if (strcmp(mnemonic, "st.b") == 0) {
@@ -112,6 +120,8 @@ void handle_instruction(JSON_Object *instruction) {
     handle_sub_instruction(instruction);
   } else if (strcmp(mnemonic, "sub.a") == 0) {
     handle_suba_instruction(instruction);
+  } else if (strcmp(mnemonic, "xor") == 0) {
+    handle_xor_instruction(instruction);
   } else {
     fprintf(stderr, "invalid mnemonic: %s\n", mnemonic);
     exit(1);
@@ -128,21 +138,18 @@ int main(int argc, char *argv[]) {
   char buf[16];
   bool debugger_tripped = 0;
   // read instructions
-  root_value = json_parse_file("input.json");
+  root_value = json_parse_file("security-access-instructions-map.json");
   instructions = json_value_get_object(root_value);
   // kickoff execution
   init_memory();
-  set_register("pc", 0x80000238);
+  set_register("pc", 0xc0002bce); // use 0x80000238 for firmware debugging
+  set_register("a4", 0xc0000000); // random scratchpad in memory
+  uint32_t seed = 0xE572B95C;
+  set_memory_uint32_t(0xc0000000, seed);
+  debugger_tripped = 1;
   for (;;) {
     program_counter = get_register("pc");
     sprintf(formatted_address, "%08x", program_counter);
-    if (strcmp(formatted_address, "800004ee") == 0) {
-      // debugger_tripped = 1;
-    }
-    if (strcmp(formatted_address, "800005cc") == 0 ||
-        strcmp(formatted_address, "8000062c") == 0) {
-      // debugger_tripped = 0;
-    }
     instruction = json_object_get_object(instructions, formatted_address);
     if (instruction == NULL) {
       fprintf(stderr, "instruction not found at address %s\n",

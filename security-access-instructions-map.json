@@ -1,0 +1,3193 @@
+{
+  "c0002a98": {
+    "address": "c0002a98",
+    "size": 2,
+    "hex": "2010",
+    "assembly": "sub.a sp, 16",
+    "mnemonic": "sub.a",
+    "operands": [
+      "sp",
+      "16"
+    ],
+    "format": "rd"
+  },
+  "c0002a9a": {
+    "address": "c0002a9a",
+    "size": 4,
+    "hex": "09518608",
+    "assembly": "ld.h d1, [a5]6",
+    "mnemonic": "ld.h",
+    "operands": [
+      "d1",
+      "[a5]6"
+    ],
+    "format": "ro"
+  },
+  "c0002a9e": {
+    "address": "c0002a9e",
+    "size": 4,
+    "hex": "37017000",
+    "assembly": "extr.u d0, d1, 0, 16",
+    "mnemonic": "extr.u",
+    "operands": [
+      "d0",
+      "d1",
+      "0",
+      "16"
+    ],
+    "format": "rrdd"
+  },
+  "c0002aa2": {
+    "address": "c0002aa2",
+    "size": 2,
+    "hex": "8058",
+    "assembly": "mov.d d8, a5",
+    "mnemonic": "mov.d",
+    "operands": [
+      "d8",
+      "a5"
+    ],
+    "format": "rr"
+  },
+  "c0002aa4": {
+    "address": "c0002aa4",
+    "size": 2,
+    "hex": "7606",
+    "assembly": "jz d0, 0xc0002ab0",
+    "mnemonic": "jz",
+    "operands": [
+      "d0",
+      "0xc0002ab0"
+    ],
+    "format": "ra"
+  },
+  "c0002aa6": {
+    "address": "c0002aa6",
+    "size": 2,
+    "hex": "d453",
+    "assembly": "ld.a a3, [a5]",
+    "mnemonic": "ld.a",
+    "operands": [
+      "a3",
+      "[a5]"
+    ],
+    "format": "ro"
+  },
+  "c0002aa8": {
+    "address": "c0002aa8",
+    "size": 2,
+    "hex": "0c30",
+    "assembly": "ld.bu d15, [a3]0",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a3]0"
+    ],
+    "format": "ro"
+  },
+  "c0002aaa": {
+    "address": "c0002aaa",
+    "size": 2,
+    "hex": "5e57",
+    "assembly": "jne d15, 5, 0xc0002ab8",
+    "mnemonic": "jne",
+    "operands": [
+      "d15",
+      "5",
+      "0xc0002ab8"
+    ],
+    "format": "rda"
+  },
+  "c0002aac": {
+    "address": "c0002aac",
+    "size": 4,
+    "hex": "df100600",
+    "assembly": "jeq d0, 1, 0xc0002ab8",
+    "mnemonic": "jeq",
+    "operands": [
+      "d0",
+      "1",
+      "0xc0002ab8"
+    ],
+    "format": "rda"
+  },
+  "c0002ab0": {
+    "address": "c0002ab0",
+    "size": 4,
+    "hex": "3b300120",
+    "assembly": "mov d2, 19",
+    "mnemonic": "mov",
+    "operands": [
+      "d2",
+      "19"
+    ],
+    "format": "rd"
+  },
+  "c0002ab4": {
+    "address": "c0002ab4",
+    "size": 4,
+    "hex": "1d004701",
+    "assembly": "j 0xc0002d42",
+    "mnemonic": "j",
+    "operands": [
+      "0xc0002d42"
+    ],
+    "format": "a"
+  },
+  "c0002ab8": {
+    "address": "c0002ab8",
+    "size": 4,
+    "hex": "3b000120",
+    "assembly": "mov d2, 16",
+    "mnemonic": "mov",
+    "operands": [
+      "d2",
+      "16"
+    ],
+    "format": "rd"
+  },
+  "c0002abc": {
+    "address": "c0002abc",
+    "size": 4,
+    "hex": "d90cc441",
+    "assembly": "lea a12, [a0]7428",
+    "mnemonic": "lea",
+    "operands": [
+      "a12",
+      "[a0]7428"
+    ],
+    "format": "ro"
+  },
+  "c0002ac0": {
+    "address": "c0002ac0",
+    "size": 2,
+    "hex": "0cc0",
+    "assembly": "ld.bu d15, [a12]0",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a12]0"
+    ],
+    "format": "ro"
+  },
+  "c0002ac2": {
+    "address": "c0002ac2",
+    "size": 4,
+    "hex": "ff6f4081",
+    "assembly": "jge.u d15, 6, 0xc0002d42",
+    "mnemonic": "jge.u",
+    "operands": [
+      "d15",
+      "6",
+      "0xc0002d42"
+    ],
+    "format": "rda"
+  },
+  "c0002ac6": {
+    "address": "c0002ac6",
+    "size": 4,
+    "hex": "910000fd",
+    "assembly": "movh.a a15, 53248",
+    "mnemonic": "movh.a",
+    "operands": [
+      "a15",
+      "53248"
+    ],
+    "format": "rd"
+  },
+  "c0002aca": {
+    "address": "c0002aca",
+    "size": 2,
+    "hex": "90ff",
+    "assembly": "addsc.a a15, a15, d15, 2",
+    "mnemonic": "addsc.a",
+    "operands": [
+      "a15",
+      "a15",
+      "d15",
+      "2"
+    ],
+    "format": "rrrd"
+  },
+  "c0002acc": {
+    "address": "c0002acc",
+    "size": 4,
+    "hex": "99ff5006",
+    "assembly": "ld.a a15, [a15]25616",
+    "mnemonic": "ld.a",
+    "operands": [
+      "a15",
+      "[a15]25616"
+    ],
+    "format": "ro"
+  },
+  "c0002ad0": {
+    "address": "c0002ad0",
+    "size": 2,
+    "hex": "0000",
+    "assembly": "nop",
+    "mnemonic": "nop",
+    "operands": [],
+    "format": ""
+  },
+  "c0002ad2": {
+    "address": "c0002ad2",
+    "size": 2,
+    "hex": "dc0f",
+    "assembly": "ji a15",
+    "mnemonic": "ji",
+    "operands": [
+      "a15"
+    ],
+    "format": "r"
+  },
+  "c0002ad4": {
+    "address": "c0002ad4",
+    "size": 2,
+    "hex": "da12",
+    "assembly": "mov d15, 18",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "18"
+    ],
+    "format": "rd"
+  },
+  "c0002ad6": {
+    "address": "c0002ad6",
+    "size": 2,
+    "hex": "1431",
+    "assembly": "ld.bu d1, [a3]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d1",
+      "[a3]"
+    ],
+    "format": "ro"
+  },
+  "c0002ad8": {
+    "address": "c0002ad8",
+    "size": 4,
+    "hex": "8b612002",
+    "assembly": "ne d0, d1, 6",
+    "mnemonic": "ne",
+    "operands": [
+      "d0",
+      "d1",
+      "6"
+    ],
+    "format": "rrd"
+  },
+  "c0002adc": {
+    "address": "c0002adc",
+    "size": 4,
+    "hex": "ab4f8220",
+    "assembly": "sel d2, d0, d15, 36",
+    "mnemonic": "sel",
+    "operands": [
+      "d2",
+      "d0",
+      "d15",
+      "36"
+    ],
+    "format": "rrrd"
+  },
+  "c0002ae0": {
+    "address": "c0002ae0",
+    "size": 4,
+    "hex": "df513181",
+    "assembly": "jne d1, 5, 0xc0002d42",
+    "mnemonic": "jne",
+    "operands": [
+      "d1",
+      "5",
+      "0xc0002d42"
+    ],
+    "format": "rda"
+  },
+  "c0002ae4": {
+    "address": "c0002ae4",
+    "size": 4,
+    "hex": "d9ae0800",
+    "assembly": "lea a14, [sp]8",
+    "mnemonic": "lea",
+    "operands": [
+      "a14",
+      "[sp]8"
+    ],
+    "format": "ro"
+  },
+  "c0002ae8": {
+    "address": "c0002ae8",
+    "size": 2,
+    "hex": "822f",
+    "assembly": "mov d15, 2",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "2"
+    ],
+    "format": "rd"
+  },
+  "c0002aea": {
+    "address": "c0002aea",
+    "size": 2,
+    "hex": "a03f",
+    "assembly": "mov.a a15, 3",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a15",
+      "3"
+    ],
+    "format": "rd"
+  },
+  "c0002aec": {
+    "address": "c0002aec",
+    "size": 2,
+    "hex": "2cc0",
+    "assembly": "st.b [a12]0, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a12]0",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002aee": {
+    "address": "c0002aee",
+    "size": 2,
+    "hex": "820f",
+    "assembly": "mov d15, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002af0": {
+    "address": "c0002af0",
+    "size": 2,
+    "hex": "40e3",
+    "assembly": "mov.aa a3, a14",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a3",
+      "a14"
+    ],
+    "format": "rr"
+  },
+  "c0002af2": {
+    "address": "c0002af2",
+    "size": 2,
+    "hex": "40f2",
+    "assembly": "mov.aa a2, a15",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a2",
+      "a15"
+    ],
+    "format": "rr"
+  },
+  "c0002af4": {
+    "address": "c0002af4",
+    "size": 2,
+    "hex": "243f",
+    "assembly": "st.b [a3+], d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a3+]",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002af6": {
+    "address": "c0002af6",
+    "size": 2,
+    "hex": "fc2f",
+    "assembly": "loop a2, 0xc0002af4",
+    "mnemonic": "loop",
+    "operands": [
+      "a2",
+      "0xc0002af4"
+    ],
+    "format": "ra"
+  },
+  "c0002af8": {
+    "address": "c0002af8",
+    "size": 2,
+    "hex": "daff",
+    "assembly": "mov d15, 255",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "255"
+    ],
+    "format": "rd"
+  },
+  "c0002afa": {
+    "address": "c0002afa",
+    "size": 4,
+    "hex": "d9ad0400",
+    "assembly": "lea a13, [sp]4",
+    "mnemonic": "lea",
+    "operands": [
+      "a13",
+      "[sp]4"
+    ],
+    "format": "ro"
+  },
+  "c0002afe": {
+    "address": "c0002afe",
+    "size": 2,
+    "hex": "40d2",
+    "assembly": "mov.aa a2, a13",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a2",
+      "a13"
+    ],
+    "format": "rr"
+  },
+  "c0002b00": {
+    "address": "c0002b00",
+    "size": 2,
+    "hex": "242f",
+    "assembly": "st.b [a2+], d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a2+]",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002b02": {
+    "address": "c0002b02",
+    "size": 2,
+    "hex": "fcff",
+    "assembly": "loop a15, 0xc0002b00",
+    "mnemonic": "loop",
+    "operands": [
+      "a15",
+      "0xc0002b00"
+    ],
+    "format": "ra"
+  },
+  "c0002b04": {
+    "address": "c0002b04",
+    "size": 4,
+    "hex": "d9ac0c00",
+    "assembly": "lea a12, [sp]12",
+    "mnemonic": "lea",
+    "operands": [
+      "a12",
+      "[sp]12"
+    ],
+    "format": "ro"
+  },
+  "c0002b08": {
+    "address": "c0002b08",
+    "size": 2,
+    "hex": "8244",
+    "assembly": "mov d4, 4",
+    "mnemonic": "mov",
+    "operands": [
+      "d4",
+      "4"
+    ],
+    "format": "rd"
+  },
+  "c0002b0a": {
+    "address": "c0002b0a",
+    "size": 2,
+    "hex": "40c4",
+    "assembly": "mov.aa a4, a12",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a4",
+      "a12"
+    ],
+    "format": "rr"
+  },
+  "c0002b0c": {
+    "address": "c0002b0c",
+    "size": 4,
+    "hex": "edd0bb2f",
+    "assembly": "calla 0xd0005f76",
+    "mnemonic": "calla",
+    "operands": [
+      "0xd0005f76"
+    ],
+    "format": "a"
+  },
+  "c0002b10": {
+    "address": "c0002b10",
+    "size": 2,
+    "hex": "8212",
+    "assembly": "mov d2, 1",
+    "mnemonic": "mov",
+    "operands": [
+      "d2",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002b12": {
+    "address": "c0002b12",
+    "size": 2,
+    "hex": "a034",
+    "assembly": "mov.a a4, 3",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a4",
+      "3"
+    ],
+    "format": "rd"
+  },
+  "c0002b14": {
+    "address": "c0002b14",
+    "size": 2,
+    "hex": "40c3",
+    "assembly": "mov.aa a3, a12",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a3",
+      "a12"
+    ],
+    "format": "rr"
+  },
+  "c0002b16": {
+    "address": "c0002b16",
+    "size": 2,
+    "hex": "40e2",
+    "assembly": "mov.aa a2, a14",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a2",
+      "a14"
+    ],
+    "format": "rr"
+  },
+  "c0002b18": {
+    "address": "c0002b18",
+    "size": 2,
+    "hex": "022f",
+    "assembly": "mov d15, d2",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "d2"
+    ],
+    "format": "rr"
+  },
+  "c0002b1a": {
+    "address": "c0002b1a",
+    "size": 2,
+    "hex": "404f",
+    "assembly": "mov.aa a15, a4",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a15",
+      "a4"
+    ],
+    "format": "rr"
+  },
+  "c0002b1c": {
+    "address": "c0002b1c",
+    "size": 2,
+    "hex": "0431",
+    "assembly": "ld.bu d1, [a3+]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d1",
+      "[a3+]"
+    ],
+    "format": "ro"
+  },
+  "c0002b1e": {
+    "address": "c0002b1e",
+    "size": 2,
+    "hex": "0420",
+    "assembly": "ld.bu d0, [a2+]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d0",
+      "[a2+]"
+    ],
+    "format": "ro"
+  },
+  "c0002b20": {
+    "address": "c0002b20",
+    "size": 4,
+    "hex": "5f010680",
+    "assembly": "jne d1, d0, 0xc0002b2c",
+    "mnemonic": "jne",
+    "operands": [
+      "d1",
+      "d0",
+      "0xc0002b2c"
+    ],
+    "format": "rra"
+  },
+  "c0002b24": {
+    "address": "c0002b24",
+    "size": 2,
+    "hex": "0000",
+    "assembly": "nop",
+    "mnemonic": "nop",
+    "operands": [],
+    "format": ""
+  },
+  "c0002b26": {
+    "address": "c0002b26",
+    "size": 2,
+    "hex": "0000",
+    "assembly": "nop",
+    "mnemonic": "nop",
+    "operands": [],
+    "format": ""
+  },
+  "c0002b28": {
+    "address": "c0002b28",
+    "size": 2,
+    "hex": "fcfa",
+    "assembly": "loop a15, 0xc0002b1c",
+    "mnemonic": "loop",
+    "operands": [
+      "a15",
+      "0xc0002b1c"
+    ],
+    "format": "ra"
+  },
+  "c0002b2a": {
+    "address": "c0002b2a",
+    "size": 2,
+    "hex": "820f",
+    "assembly": "mov d15, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002b2c": {
+    "address": "c0002b2c",
+    "size": 2,
+    "hex": "6eee",
+    "assembly": "jz d15, 0xc0002b08",
+    "mnemonic": "jz",
+    "operands": [
+      "d15",
+      "0xc0002b08"
+    ],
+    "format": "ra"
+  },
+  "c0002b2e": {
+    "address": "c0002b2e",
+    "size": 2,
+    "hex": "022f",
+    "assembly": "mov d15, d2",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "d2"
+    ],
+    "format": "rr"
+  },
+  "c0002b30": {
+    "address": "c0002b30",
+    "size": 2,
+    "hex": "40c3",
+    "assembly": "mov.aa a3, a12",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a3",
+      "a12"
+    ],
+    "format": "rr"
+  },
+  "c0002b32": {
+    "address": "c0002b32",
+    "size": 2,
+    "hex": "40d2",
+    "assembly": "mov.aa a2, a13",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a2",
+      "a13"
+    ],
+    "format": "rr"
+  },
+  "c0002b34": {
+    "address": "c0002b34",
+    "size": 2,
+    "hex": "404f",
+    "assembly": "mov.aa a15, a4",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a15",
+      "a4"
+    ],
+    "format": "rr"
+  },
+  "c0002b36": {
+    "address": "c0002b36",
+    "size": 2,
+    "hex": "0431",
+    "assembly": "ld.bu d1, [a3+]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d1",
+      "[a3+]"
+    ],
+    "format": "ro"
+  },
+  "c0002b38": {
+    "address": "c0002b38",
+    "size": 2,
+    "hex": "0420",
+    "assembly": "ld.bu d0, [a2+]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d0",
+      "[a2+]"
+    ],
+    "format": "ro"
+  },
+  "c0002b3a": {
+    "address": "c0002b3a",
+    "size": 4,
+    "hex": "5f010680",
+    "assembly": "jne d1, d0, 0xc0002b46",
+    "mnemonic": "jne",
+    "operands": [
+      "d1",
+      "d0",
+      "0xc0002b46"
+    ],
+    "format": "rra"
+  },
+  "c0002b3e": {
+    "address": "c0002b3e",
+    "size": 2,
+    "hex": "0000",
+    "assembly": "nop",
+    "mnemonic": "nop",
+    "operands": [],
+    "format": ""
+  },
+  "c0002b40": {
+    "address": "c0002b40",
+    "size": 2,
+    "hex": "0000",
+    "assembly": "nop",
+    "mnemonic": "nop",
+    "operands": [],
+    "format": ""
+  },
+  "c0002b42": {
+    "address": "c0002b42",
+    "size": 2,
+    "hex": "fcfa",
+    "assembly": "loop a15, 0xc0002b36",
+    "mnemonic": "loop",
+    "operands": [
+      "a15",
+      "0xc0002b36"
+    ],
+    "format": "ra"
+  },
+  "c0002b44": {
+    "address": "c0002b44",
+    "size": 2,
+    "hex": "820f",
+    "assembly": "mov d15, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002b46": {
+    "address": "c0002b46",
+    "size": 2,
+    "hex": "6ee1",
+    "assembly": "jz d15, 0xc0002b08",
+    "mnemonic": "jz",
+    "operands": [
+      "d15",
+      "0xc0002b08"
+    ],
+    "format": "ra"
+  },
+  "c0002b48": {
+    "address": "c0002b48",
+    "size": 2,
+    "hex": "022f",
+    "assembly": "mov d15, d2",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "d2"
+    ],
+    "format": "rr"
+  },
+  "c0002b4a": {
+    "address": "c0002b4a",
+    "size": 4,
+    "hex": "d905c541",
+    "assembly": "lea a5, [a0]7429",
+    "mnemonic": "lea",
+    "operands": [
+      "a5",
+      "[a0]7429"
+    ],
+    "format": "ro"
+  },
+  "c0002b4e": {
+    "address": "c0002b4e",
+    "size": 2,
+    "hex": "40c3",
+    "assembly": "mov.aa a3, a12",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a3",
+      "a12"
+    ],
+    "format": "rr"
+  },
+  "c0002b50": {
+    "address": "c0002b50",
+    "size": 2,
+    "hex": "404f",
+    "assembly": "mov.aa a15, a4",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a15",
+      "a4"
+    ],
+    "format": "rr"
+  },
+  "c0002b52": {
+    "address": "c0002b52",
+    "size": 2,
+    "hex": "4052",
+    "assembly": "mov.aa a2, a5",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a2",
+      "a5"
+    ],
+    "format": "rr"
+  },
+  "c0002b54": {
+    "address": "c0002b54",
+    "size": 2,
+    "hex": "0431",
+    "assembly": "ld.bu d1, [a3+]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d1",
+      "[a3+]"
+    ],
+    "format": "ro"
+  },
+  "c0002b56": {
+    "address": "c0002b56",
+    "size": 2,
+    "hex": "0420",
+    "assembly": "ld.bu d0, [a2+]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d0",
+      "[a2+]"
+    ],
+    "format": "ro"
+  },
+  "c0002b58": {
+    "address": "c0002b58",
+    "size": 4,
+    "hex": "5f010680",
+    "assembly": "jne d1, d0, 0xc0002b64",
+    "mnemonic": "jne",
+    "operands": [
+      "d1",
+      "d0",
+      "0xc0002b64"
+    ],
+    "format": "rra"
+  },
+  "c0002b5c": {
+    "address": "c0002b5c",
+    "size": 2,
+    "hex": "0000",
+    "assembly": "nop",
+    "mnemonic": "nop",
+    "operands": [],
+    "format": ""
+  },
+  "c0002b5e": {
+    "address": "c0002b5e",
+    "size": 2,
+    "hex": "0000",
+    "assembly": "nop",
+    "mnemonic": "nop",
+    "operands": [],
+    "format": ""
+  },
+  "c0002b60": {
+    "address": "c0002b60",
+    "size": 2,
+    "hex": "fcfa",
+    "assembly": "loop a15, 0xc0002b54",
+    "mnemonic": "loop",
+    "operands": [
+      "a15",
+      "0xc0002b54"
+    ],
+    "format": "ra"
+  },
+  "c0002b62": {
+    "address": "c0002b62",
+    "size": 2,
+    "hex": "820f",
+    "assembly": "mov d15, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002b64": {
+    "address": "c0002b64",
+    "size": 2,
+    "hex": "6ed2",
+    "assembly": "jz d15, 0xc0002b08",
+    "mnemonic": "jz",
+    "operands": [
+      "d15",
+      "0xc0002b08"
+    ],
+    "format": "ra"
+  },
+  "c0002b66": {
+    "address": "c0002b66",
+    "size": 2,
+    "hex": "4053",
+    "assembly": "mov.aa a3, a5",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a3",
+      "a5"
+    ],
+    "format": "rr"
+  },
+  "c0002b68": {
+    "address": "c0002b68",
+    "size": 2,
+    "hex": "404f",
+    "assembly": "mov.aa a15, a4",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a15",
+      "a4"
+    ],
+    "format": "rr"
+  },
+  "c0002b6a": {
+    "address": "c0002b6a",
+    "size": 2,
+    "hex": "04cf",
+    "assembly": "ld.bu d15, [a12+]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a12+]"
+    ],
+    "format": "ro"
+  },
+  "c0002b6c": {
+    "address": "c0002b6c",
+    "size": 2,
+    "hex": "243f",
+    "assembly": "st.b [a3+], d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a3+]",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002b6e": {
+    "address": "c0002b6e",
+    "size": 2,
+    "hex": "fcfe",
+    "assembly": "loop a15, 0xc0002b6a",
+    "mnemonic": "loop",
+    "operands": [
+      "a15",
+      "0xc0002b6a"
+    ],
+    "format": "ra"
+  },
+  "c0002b70": {
+    "address": "c0002b70",
+    "size": 2,
+    "hex": "6082",
+    "assembly": "mov.a a2, d8",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a2",
+      "d8"
+    ],
+    "format": "rr"
+  },
+  "c0002b72": {
+    "address": "c0002b72",
+    "size": 2,
+    "hex": "cc20",
+    "assembly": "ld.a a15, [a2]0",
+    "mnemonic": "ld.a",
+    "operands": [
+      "a15",
+      "[a2]0"
+    ],
+    "format": "ro"
+  },
+  "c0002b74": {
+    "address": "c0002b74",
+    "size": 2,
+    "hex": "b01f",
+    "assembly": "add.a a15, 1",
+    "mnemonic": "add.a",
+    "operands": [
+      "a15",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002b76": {
+    "address": "c0002b76",
+    "size": 2,
+    "hex": "40f3",
+    "assembly": "mov.aa a3, a15",
+    "mnemonic": "mov.aa",
+    "operands": [
+      "a3",
+      "a15"
+    ],
+    "format": "rr"
+  },
+  "c0002b78": {
+    "address": "c0002b78",
+    "size": 2,
+    "hex": "045f",
+    "assembly": "ld.bu d15, [a5+]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a5+]"
+    ],
+    "format": "ro"
+  },
+  "c0002b7a": {
+    "address": "c0002b7a",
+    "size": 2,
+    "hex": "243f",
+    "assembly": "st.b [a3+], d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a3+]",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002b7c": {
+    "address": "c0002b7c",
+    "size": 2,
+    "hex": "fc4e",
+    "assembly": "loop a4, 0xc0002b78",
+    "mnemonic": "loop",
+    "operands": [
+      "a4",
+      "0xc0002b78"
+    ],
+    "format": "ra"
+  },
+  "c0002b7e": {
+    "address": "c0002b7e",
+    "size": 2,
+    "hex": "6083",
+    "assembly": "mov.a a3, d8",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a3",
+      "d8"
+    ],
+    "format": "rr"
+  },
+  "c0002b80": {
+    "address": "c0002b80",
+    "size": 2,
+    "hex": "825f",
+    "assembly": "mov d15, 5",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "5"
+    ],
+    "format": "rd"
+  },
+  "c0002b82": {
+    "address": "c0002b82",
+    "size": 4,
+    "hex": "89320a08",
+    "assembly": "st.b [a3]10, d2",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a3]10",
+      "d2"
+    ],
+    "format": "or"
+  },
+  "c0002b86": {
+    "address": "c0002b86",
+    "size": 4,
+    "hex": "1d00e400",
+    "assembly": "j 0xc0002d4e",
+    "mnemonic": "j",
+    "operands": [
+      "0xc0002d4e"
+    ],
+    "format": "a"
+  },
+  "c0002b8a": {
+    "address": "c0002b8a",
+    "size": 2,
+    "hex": "1430",
+    "assembly": "ld.bu d0, [a3]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d0",
+      "[a3]"
+    ],
+    "format": "ro"
+  },
+  "c0002b8c": {
+    "address": "c0002b8c",
+    "size": 4,
+    "hex": "df501180",
+    "assembly": "jne d0, 5, 0xc0002bae",
+    "mnemonic": "jne",
+    "operands": [
+      "d0",
+      "5",
+      "0xc0002bae"
+    ],
+    "format": "rda"
+  },
+  "c0002b90": {
+    "address": "c0002b90",
+    "size": 2,
+    "hex": "b013",
+    "assembly": "add.a a3, 1",
+    "mnemonic": "add.a",
+    "operands": [
+      "a3",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002b92": {
+    "address": "c0002b92",
+    "size": 4,
+    "hex": "d902c541",
+    "assembly": "lea a2, [a0]7429",
+    "mnemonic": "lea",
+    "operands": [
+      "a2",
+      "[a0]7429"
+    ],
+    "format": "ro"
+  },
+  "c0002b96": {
+    "address": "c0002b96",
+    "size": 2,
+    "hex": "a03f",
+    "assembly": "mov.a a15, 3",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a15",
+      "3"
+    ],
+    "format": "rd"
+  },
+  "c0002b98": {
+    "address": "c0002b98",
+    "size": 2,
+    "hex": "042f",
+    "assembly": "ld.bu d15, [a2+]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a2+]"
+    ],
+    "format": "ro"
+  },
+  "c0002b9a": {
+    "address": "c0002b9a",
+    "size": 2,
+    "hex": "243f",
+    "assembly": "st.b [a3+], d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a3+]",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002b9c": {
+    "address": "c0002b9c",
+    "size": 2,
+    "hex": "fcfe",
+    "assembly": "loop a15, 0xc0002b98",
+    "mnemonic": "loop",
+    "operands": [
+      "a15",
+      "0xc0002b98"
+    ],
+    "format": "ra"
+  },
+  "c0002b9e": {
+    "address": "c0002b9e",
+    "size": 2,
+    "hex": "6086",
+    "assembly": "mov.a a6, d8",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a6",
+      "d8"
+    ],
+    "format": "rr"
+  },
+  "c0002ba0": {
+    "address": "c0002ba0",
+    "size": 2,
+    "hex": "821f",
+    "assembly": "mov d15, 1",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002ba2": {
+    "address": "c0002ba2",
+    "size": 4,
+    "hex": "89608808",
+    "assembly": "st.h [a6]8, d0",
+    "mnemonic": "st.h",
+    "operands": [
+      "[a6]8",
+      "d0"
+    ],
+    "format": "or"
+  },
+  "c0002ba6": {
+    "address": "c0002ba6",
+    "size": 2,
+    "hex": "2c6a",
+    "assembly": "st.b [a6]10, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a6]10",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002ba8": {
+    "address": "c0002ba8",
+    "size": 2,
+    "hex": "0090",
+    "assembly": "ret",
+    "mnemonic": "ret",
+    "operands": [],
+    "format": ""
+  },
+  "c0002baa": {
+    "address": "c0002baa",
+    "size": 2,
+    "hex": "8202",
+    "assembly": "mov d2, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d2",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002bac": {
+    "address": "c0002bac",
+    "size": 2,
+    "hex": "3c71",
+    "assembly": "j 0xc0002c8e",
+    "mnemonic": "j",
+    "operands": [
+      "0xc0002c8e"
+    ],
+    "format": "a"
+  },
+  "c0002bae": {
+    "address": "c0002bae",
+    "size": 4,
+    "hex": "3b400220",
+    "assembly": "mov d2, 36",
+    "mnemonic": "mov",
+    "operands": [
+      "d2",
+      "36"
+    ],
+    "format": "rd"
+  },
+  "c0002bb2": {
+    "address": "c0002bb2",
+    "size": 4,
+    "hex": "df60c880",
+    "assembly": "jne d0, 6, 0xc0002d42",
+    "mnemonic": "jne",
+    "operands": [
+      "d0",
+      "6",
+      "0xc0002d42"
+    ],
+    "format": "rda"
+  },
+  "c0002bb6": {
+    "address": "c0002bb6",
+    "size": 4,
+    "hex": "370170f0",
+    "assembly": "extr.u d15, d1, 0, 16",
+    "mnemonic": "extr.u",
+    "operands": [
+      "d15",
+      "d1",
+      "0",
+      "16"
+    ],
+    "format": "rrdd"
+  },
+  "c0002bba": {
+    "address": "c0002bba",
+    "size": 4,
+    "hex": "df5f7680",
+    "assembly": "jne d15, 5, 0xc0002ca6",
+    "mnemonic": "jne",
+    "operands": [
+      "d15",
+      "5",
+      "0xc0002ca6"
+    ],
+    "format": "rda"
+  },
+  "c0002bbe": {
+    "address": "c0002bbe",
+    "size": 4,
+    "hex": "d904c541",
+    "assembly": "lea a4, [a0]7429",
+    "mnemonic": "lea",
+    "operands": [
+      "a4",
+      "[a0]7429"
+    ],
+    "format": "ro"
+  },
+  "c0002bc2": {
+    "address": "c0002bc2",
+    "size": 2,
+    "hex": "8201",
+    "assembly": "mov d1, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d1",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002bc4": {
+    "address": "c0002bc4",
+    "size": 2,
+    "hex": "8004",
+    "assembly": "mov.d d4, a0",
+    "mnemonic": "mov.d",
+    "operands": [
+      "d4",
+      "a0"
+    ],
+    "format": "rr"
+  },
+  "c0002bc6": {
+    "address": "c0002bc6",
+    "size": 4,
+    "hex": "1ba4eb4f",
+    "assembly": "addi d4, d4, -326",
+    "mnemonic": "addi",
+    "operands": [
+      "d4",
+      "d4",
+      "-326"
+    ],
+    "format": "rrd"
+  },
+  "c0002bca": {
+    "address": "c0002bca",
+    "size": 4,
+    "hex": "d9350100",
+    "assembly": "lea a5, [a3]1",
+    "mnemonic": "lea",
+    "operands": [
+      "a5",
+      "[a3]1"
+    ],
+    "format": "ro"
+  },
+  "c0002bce": {
+    "address": "c0002bce",
+    "size": 2,
+    "hex": "1440",
+    "assembly": "ld.bu d0, [a4]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d0",
+      "[a4]"
+    ],
+    "format": "ro"
+  },
+  "c0002bd0": {
+    "address": "c0002bd0",
+    "size": 2,
+    "hex": "0c41",
+    "assembly": "ld.bu d15, [a4]1",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a4]1"
+    ],
+    "format": "ro"
+  },
+  "c0002bd2": {
+    "address": "c0002bd2",
+    "size": 2,
+    "hex": "c60f",
+    "assembly": "xor d15, d0",
+    "mnemonic": "xor",
+    "operands": [
+      "d15",
+      "d0"
+    ],
+    "format": "rr"
+  },
+  "c0002bd4": {
+    "address": "c0002bd4",
+    "size": 4,
+    "hex": "370f6830",
+    "assembly": "extr.u d3, d15, 0, 8",
+    "mnemonic": "extr.u",
+    "operands": [
+      "d3",
+      "d15",
+      "0",
+      "8"
+    ],
+    "format": "rrdd"
+  },
+  "c0002bd8": {
+    "address": "c0002bd8",
+    "size": 4,
+    "hex": "094f0208",
+    "assembly": "ld.b d15, [a4]2",
+    "mnemonic": "ld.b",
+    "operands": [
+      "d15",
+      "[a4]2"
+    ],
+    "format": "ro"
+  },
+  "c0002bdc": {
+    "address": "c0002bdc",
+    "size": 4,
+    "hex": "8f1f1e00",
+    "assembly": "sh d0, d15, -31",
+    "mnemonic": "sh",
+    "operands": [
+      "d0",
+      "d15",
+      "-31"
+    ],
+    "format": "rrd"
+  },
+  "c0002be0": {
+    "address": "c0002be0",
+    "size": 2,
+    "hex": "0c43",
+    "assembly": "ld.bu d15, [a4]3",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a4]3"
+    ],
+    "format": "ro"
+  },
+  "c0002be2": {
+    "address": "c0002be2",
+    "size": 4,
+    "hex": "27ff2000",
+    "assembly": "sh.or.t d0, d15, 0, d15, 0",
+    "mnemonic": "sh.or.t",
+    "operands": [
+      "d0",
+      "d15",
+      "0",
+      "d15",
+      "0"
+    ],
+    "format": "rrdrd"
+  },
+  "c0002be6": {
+    "address": "c0002be6",
+    "size": 2,
+    "hex": "820f",
+    "assembly": "mov d15, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002be8": {
+    "address": "c0002be8",
+    "size": 4,
+    "hex": "370f87f0",
+    "assembly": "insert d15, d15, d0, 1, 7",
+    "mnemonic": "insert",
+    "operands": [
+      "d15",
+      "d15",
+      "d0",
+      "1",
+      "7"
+    ],
+    "format": "rrrdd"
+  },
+  "c0002bec": {
+    "address": "c0002bec",
+    "size": 4,
+    "hex": "c733a1f0",
+    "assembly": "or.or.t d15, d3, 1, d3, 1",
+    "mnemonic": "or.or.t",
+    "operands": [
+      "d15",
+      "d3",
+      "1",
+      "d3",
+      "1"
+    ],
+    "format": "rrdrd"
+  },
+  "c0002bf0": {
+    "address": "c0002bf0",
+    "size": 4,
+    "hex": "8f2f2020",
+    "assembly": "sha d2, d15, 2",
+    "mnemonic": "sha",
+    "operands": [
+      "d2",
+      "d15",
+      "2"
+    ],
+    "format": "rrd"
+  },
+  "c0002bf4": {
+    "address": "c0002bf4",
+    "size": 2,
+    "hex": "1a12",
+    "assembly": "add d15, d2, d1",
+    "mnemonic": "add",
+    "operands": [
+      "d15",
+      "d2",
+      "d1"
+    ],
+    "format": "rrr"
+  },
+  "c0002bf6": {
+    "address": "c0002bf6",
+    "size": 4,
+    "hex": "d9af1000",
+    "assembly": "lea a15, [sp]16",
+    "mnemonic": "lea",
+    "operands": [
+      "a15",
+      "[sp]16"
+    ],
+    "format": "ro"
+  },
+  "c0002bfa": {
+    "address": "c0002bfa",
+    "size": 4,
+    "hex": "01410026",
+    "assembly": "addsc.a a2, a4, d1, 0",
+    "mnemonic": "addsc.a",
+    "operands": [
+      "a2",
+      "a4",
+      "d1",
+      "0"
+    ],
+    "format": "rrrd"
+  },
+  "c0002bfe": {
+    "address": "c0002bfe",
+    "size": 4,
+    "hex": "01f10036",
+    "assembly": "addsc.a a3, a15, d1, 0",
+    "mnemonic": "addsc.a",
+    "operands": [
+      "a3",
+      "a15",
+      "d1",
+      "0"
+    ],
+    "format": "rrrd"
+  },
+  "c0002c02": {
+    "address": "c0002c02",
+    "size": 2,
+    "hex": "c211",
+    "assembly": "add d1, 1",
+    "mnemonic": "add",
+    "operands": [
+      "d1",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002c04": {
+    "address": "c0002c04",
+    "size": 2,
+    "hex": "60f6",
+    "assembly": "mov.a a6, d15",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a6",
+      "d15"
+    ],
+    "format": "rr"
+  },
+  "c0002c06": {
+    "address": "c0002c06",
+    "size": 4,
+    "hex": "016400f6",
+    "assembly": "addsc.a a15, a6, d4, 0",
+    "mnemonic": "addsc.a",
+    "operands": [
+      "a15",
+      "a6",
+      "d4",
+      "0"
+    ],
+    "format": "rrrd"
+  },
+  "c0002c0a": {
+    "address": "c0002c0a",
+    "size": 4,
+    "hex": "37016810",
+    "assembly": "extr.u d1, d1, 0, 8",
+    "mnemonic": "extr.u",
+    "operands": [
+      "d1",
+      "d1",
+      "0",
+      "8"
+    ],
+    "format": "rrdd"
+  },
+  "c0002c0e": {
+    "address": "c0002c0e",
+    "size": 2,
+    "hex": "0c20",
+    "assembly": "ld.bu d15, [a2]0",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a2]0"
+    ],
+    "format": "ro"
+  },
+  "c0002c10": {
+    "address": "c0002c10",
+    "size": 2,
+    "hex": "0800",
+    "assembly": "ld.bu d0, [a15]0",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d0",
+      "[a15]0"
+    ],
+    "format": "ro"
+  },
+  "c0002c12": {
+    "address": "c0002c12",
+    "size": 2,
+    "hex": "c60f",
+    "assembly": "xor d15, d0",
+    "mnemonic": "xor",
+    "operands": [
+      "d15",
+      "d0"
+    ],
+    "format": "rr"
+  },
+  "c0002c14": {
+    "address": "c0002c14",
+    "size": 4,
+    "hex": "893f34f8",
+    "assembly": "st.b [a3]-12, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a3]-12",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002c18": {
+    "address": "c0002c18",
+    "size": 4,
+    "hex": "bf41eeff",
+    "assembly": "jlt.u d1, 4, 0xc0002bf4",
+    "mnemonic": "jlt.u",
+    "operands": [
+      "d1",
+      "4",
+      "0xc0002bf4"
+    ],
+    "format": "rda"
+  },
+  "c0002c1c": {
+    "address": "c0002c1c",
+    "size": 2,
+    "hex": "8201",
+    "assembly": "mov d1, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d1",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002c1e": {
+    "address": "c0002c1e",
+    "size": 2,
+    "hex": "0c43",
+    "assembly": "ld.bu d15, [a4]3",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a4]3"
+    ],
+    "format": "ro"
+  },
+  "c0002c20": {
+    "address": "c0002c20",
+    "size": 4,
+    "hex": "370f6102",
+    "assembly": "extr.u d0, d15, 4, 1",
+    "mnemonic": "extr.u",
+    "operands": [
+      "d0",
+      "d15",
+      "4",
+      "1"
+    ],
+    "format": "rrdd"
+  },
+  "c0002c24": {
+    "address": "c0002c24",
+    "size": 2,
+    "hex": "820f",
+    "assembly": "mov d15, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002c26": {
+    "address": "c0002c26",
+    "size": 4,
+    "hex": "370f87f0",
+    "assembly": "insert d15, d15, d0, 1, 7",
+    "mnemonic": "insert",
+    "operands": [
+      "d15",
+      "d15",
+      "d0",
+      "1",
+      "7"
+    ],
+    "format": "rrrdd"
+  },
+  "c0002c2a": {
+    "address": "c0002c2a",
+    "size": 2,
+    "hex": "8200",
+    "assembly": "mov d0, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d0",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002c2c": {
+    "address": "c0002c2c",
+    "size": 4,
+    "hex": "c73322f1",
+    "assembly": "or.or.t d15, d3, 2, d3, 2",
+    "mnemonic": "or.or.t",
+    "operands": [
+      "d15",
+      "d3",
+      "2",
+      "d3",
+      "2"
+    ],
+    "format": "rrdrd"
+  },
+  "c0002c30": {
+    "address": "c0002c30",
+    "size": 2,
+    "hex": "8003",
+    "assembly": "mov.d d3, a0",
+    "mnemonic": "mov.d",
+    "operands": [
+      "d3",
+      "a0"
+    ],
+    "format": "rr"
+  },
+  "c0002c32": {
+    "address": "c0002c32",
+    "size": 4,
+    "hex": "1ba3e93f",
+    "assembly": "addi d3, d3, -358",
+    "mnemonic": "addi",
+    "operands": [
+      "d3",
+      "d3",
+      "-358"
+    ],
+    "format": "rrd"
+  },
+  "c0002c36": {
+    "address": "c0002c36",
+    "size": 4,
+    "hex": "37f08700",
+    "assembly": "insert d0, d0, d15, 1, 7",
+    "mnemonic": "insert",
+    "operands": [
+      "d0",
+      "d0",
+      "d15",
+      "1",
+      "7"
+    ],
+    "format": "rrrdd"
+  },
+  "c0002c3a": {
+    "address": "c0002c3a",
+    "size": 2,
+    "hex": "0ca6",
+    "assembly": "ld.bu d15, [sp]6",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[sp]6"
+    ],
+    "format": "ro"
+  },
+  "c0002c3c": {
+    "address": "c0002c3c",
+    "size": 4,
+    "hex": "c7ffa301",
+    "assembly": "or.or.t d0, d15, 3, d15, 3",
+    "mnemonic": "or.or.t",
+    "operands": [
+      "d0",
+      "d15",
+      "3",
+      "d15",
+      "3"
+    ],
+    "format": "rrdrd"
+  },
+  "c0002c40": {
+    "address": "c0002c40",
+    "size": 4,
+    "hex": "8f202020",
+    "assembly": "sha d2, d0, 2",
+    "mnemonic": "sha",
+    "operands": [
+      "d2",
+      "d0",
+      "2"
+    ],
+    "format": "rrd"
+  },
+  "c0002c44": {
+    "address": "c0002c44",
+    "size": 2,
+    "hex": "1a12",
+    "assembly": "add d15, d2, d1",
+    "mnemonic": "add",
+    "operands": [
+      "d15",
+      "d2",
+      "d1"
+    ],
+    "format": "rrr"
+  },
+  "c0002c46": {
+    "address": "c0002c46",
+    "size": 4,
+    "hex": "d9a21000",
+    "assembly": "lea a2, [sp]16",
+    "mnemonic": "lea",
+    "operands": [
+      "a2",
+      "[sp]16"
+    ],
+    "format": "ro"
+  },
+  "c0002c4a": {
+    "address": "c0002c4a",
+    "size": 4,
+    "hex": "012100f6",
+    "assembly": "addsc.a a15, a2, d1, 0",
+    "mnemonic": "addsc.a",
+    "operands": [
+      "a15",
+      "a2",
+      "d1",
+      "0"
+    ],
+    "format": "rrrd"
+  },
+  "c0002c4e": {
+    "address": "c0002c4e",
+    "size": 2,
+    "hex": "c211",
+    "assembly": "add d1, 1",
+    "mnemonic": "add",
+    "operands": [
+      "d1",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002c50": {
+    "address": "c0002c50",
+    "size": 2,
+    "hex": "60f3",
+    "assembly": "mov.a a3, d15",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a3",
+      "d15"
+    ],
+    "format": "rr"
+  },
+  "c0002c52": {
+    "address": "c0002c52",
+    "size": 4,
+    "hex": "d9fff4ff",
+    "assembly": "lea a15, [a15]-12",
+    "mnemonic": "lea",
+    "operands": [
+      "a15",
+      "[a15]-12"
+    ],
+    "format": "ro"
+  },
+  "c0002c56": {
+    "address": "c0002c56",
+    "size": 4,
+    "hex": "37016810",
+    "assembly": "extr.u d1, d1, 0, 8",
+    "mnemonic": "extr.u",
+    "operands": [
+      "d1",
+      "d1",
+      "0",
+      "8"
+    ],
+    "format": "rrdd"
+  },
+  "c0002c5a": {
+    "address": "c0002c5a",
+    "size": 4,
+    "hex": "01330026",
+    "assembly": "addsc.a a2, a3, d3, 0",
+    "mnemonic": "addsc.a",
+    "operands": [
+      "a2",
+      "a3",
+      "d3",
+      "0"
+    ],
+    "format": "rrrd"
+  },
+  "c0002c5e": {
+    "address": "c0002c5e",
+    "size": 2,
+    "hex": "0cf0",
+    "assembly": "ld.bu d15, [a15]0",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a15]0"
+    ],
+    "format": "ro"
+  },
+  "c0002c60": {
+    "address": "c0002c60",
+    "size": 2,
+    "hex": "1420",
+    "assembly": "ld.bu d0, [a2]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d0",
+      "[a2]"
+    ],
+    "format": "ro"
+  },
+  "c0002c62": {
+    "address": "c0002c62",
+    "size": 2,
+    "hex": "c60f",
+    "assembly": "xor d15, d0",
+    "mnemonic": "xor",
+    "operands": [
+      "d15",
+      "d0"
+    ],
+    "format": "rr"
+  },
+  "c0002c64": {
+    "address": "c0002c64",
+    "size": 2,
+    "hex": "280f",
+    "assembly": "st.b [a15]0, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a15]0",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002c66": {
+    "address": "c0002c66",
+    "size": 4,
+    "hex": "bf41efff",
+    "assembly": "jlt.u d1, 4, 0xc0002c44",
+    "mnemonic": "jlt.u",
+    "operands": [
+      "d1",
+      "4",
+      "0xc0002c44"
+    ],
+    "format": "rda"
+  },
+  "c0002c6a": {
+    "address": "c0002c6a",
+    "size": 2,
+    "hex": "8212",
+    "assembly": "mov d2, 1",
+    "mnemonic": "mov",
+    "operands": [
+      "d2",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002c6c": {
+    "address": "c0002c6c",
+    "size": 2,
+    "hex": "8201",
+    "assembly": "mov d1, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d1",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002c6e": {
+    "address": "c0002c6e",
+    "size": 4,
+    "hex": "d9a61000",
+    "assembly": "lea a6, [sp]16",
+    "mnemonic": "lea",
+    "operands": [
+      "a6",
+      "[sp]16"
+    ],
+    "format": "ro"
+  },
+  "c0002c72": {
+    "address": "c0002c72",
+    "size": 4,
+    "hex": "01510026",
+    "assembly": "addsc.a a2, a5, d1, 0",
+    "mnemonic": "addsc.a",
+    "operands": [
+      "a2",
+      "a5",
+      "d1",
+      "0"
+    ],
+    "format": "rrrd"
+  },
+  "c0002c76": {
+    "address": "c0002c76",
+    "size": 4,
+    "hex": "016100f6",
+    "assembly": "addsc.a a15, a6, d1, 0",
+    "mnemonic": "addsc.a",
+    "operands": [
+      "a15",
+      "a6",
+      "d1",
+      "0"
+    ],
+    "format": "rrrd"
+  },
+  "c0002c7a": {
+    "address": "c0002c7a",
+    "size": 2,
+    "hex": "0c20",
+    "assembly": "ld.bu d15, [a2]0",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d15",
+      "[a2]0"
+    ],
+    "format": "ro"
+  },
+  "c0002c7c": {
+    "address": "c0002c7c",
+    "size": 4,
+    "hex": "09f074f8",
+    "assembly": "ld.bu d0, [a15]-12",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d0",
+      "[a15]-12"
+    ],
+    "format": "ro"
+  },
+  "c0002c80": {
+    "address": "c0002c80",
+    "size": 4,
+    "hex": "5ff095ff",
+    "assembly": "jne d0, d15, 0xc0002baa",
+    "mnemonic": "jne",
+    "operands": [
+      "d0",
+      "d15",
+      "0xc0002baa"
+    ],
+    "format": "rra"
+  },
+  "c0002c84": {
+    "address": "c0002c84",
+    "size": 2,
+    "hex": "c211",
+    "assembly": "add d1, 1",
+    "mnemonic": "add",
+    "operands": [
+      "d1",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002c86": {
+    "address": "c0002c86",
+    "size": 4,
+    "hex": "37016810",
+    "assembly": "extr.u d1, d1, 0, 8",
+    "mnemonic": "extr.u",
+    "operands": [
+      "d1",
+      "d1",
+      "0",
+      "8"
+    ],
+    "format": "rrdd"
+  },
+  "c0002c8a": {
+    "address": "c0002c8a",
+    "size": 4,
+    "hex": "bf41f2ff",
+    "assembly": "jlt.u d1, 4, 0xc0002c6e",
+    "mnemonic": "jlt.u",
+    "operands": [
+      "d1",
+      "4",
+      "0xc0002c6e"
+    ],
+    "format": "rda"
+  },
+  "c0002c8e": {
+    "address": "c0002c8e",
+    "size": 2,
+    "hex": "762c",
+    "assembly": "jz d2, 0xc0002ca6",
+    "mnemonic": "jz",
+    "operands": [
+      "d2",
+      "0xc0002ca6"
+    ],
+    "format": "ra"
+  },
+  "c0002c90": {
+    "address": "c0002c90",
+    "size": 2,
+    "hex": "608f",
+    "assembly": "mov.a a15, d8",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a15",
+      "d8"
+    ],
+    "format": "rr"
+  },
+  "c0002c92": {
+    "address": "c0002c92",
+    "size": 2,
+    "hex": "823f",
+    "assembly": "mov d15, 3",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "3"
+    ],
+    "format": "rd"
+  },
+  "c0002c94": {
+    "address": "c0002c94",
+    "size": 2,
+    "hex": "2cc0",
+    "assembly": "st.b [a12]0, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a12]0",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002c96": {
+    "address": "c0002c96",
+    "size": 2,
+    "hex": "821f",
+    "assembly": "mov d15, 1",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002c98": {
+    "address": "c0002c98",
+    "size": 2,
+    "hex": "8214",
+    "assembly": "mov d4, 1",
+    "mnemonic": "mov",
+    "operands": [
+      "d4",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002c9a": {
+    "address": "c0002c9a",
+    "size": 2,
+    "hex": "28af",
+    "assembly": "st.b [a15]10, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a15]10",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002c9c": {
+    "address": "c0002c9c",
+    "size": 2,
+    "hex": "821f",
+    "assembly": "mov d15, 1",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002c9e": {
+    "address": "c0002c9e",
+    "size": 2,
+    "hex": "a84f",
+    "assembly": "st.h [a15]8, d15",
+    "mnemonic": "st.h",
+    "operands": [
+      "[a15]8",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002ca0": {
+    "address": "c0002ca0",
+    "size": 4,
+    "hex": "6d00050c",
+    "assembly": "call 0xc00044aa",
+    "mnemonic": "call",
+    "operands": [
+      "0xc00044aa"
+    ],
+    "format": "a"
+  },
+  "c0002ca4": {
+    "address": "c0002ca4",
+    "size": 2,
+    "hex": "0090",
+    "assembly": "ret",
+    "mnemonic": "ret",
+    "operands": [],
+    "format": ""
+  },
+  "c0002ca6": {
+    "address": "c0002ca6",
+    "size": 2,
+    "hex": "821f",
+    "assembly": "mov d15, 1",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002ca8": {
+    "address": "c0002ca8",
+    "size": 4,
+    "hex": "d90fc941",
+    "assembly": "lea a15, [a0]7433",
+    "mnemonic": "lea",
+    "operands": [
+      "a15",
+      "[a0]7433"
+    ],
+    "format": "ro"
+  },
+  "c0002cac": {
+    "address": "c0002cac",
+    "size": 2,
+    "hex": "8234",
+    "assembly": "mov d4, 3",
+    "mnemonic": "mov",
+    "operands": [
+      "d4",
+      "3"
+    ],
+    "format": "rd"
+  },
+  "c0002cae": {
+    "address": "c0002cae",
+    "size": 4,
+    "hex": "d904c941",
+    "assembly": "lea a4, [a0]7433",
+    "mnemonic": "lea",
+    "operands": [
+      "a4",
+      "[a0]7433"
+    ],
+    "format": "ro"
+  },
+  "c0002cb2": {
+    "address": "c0002cb2",
+    "size": 4,
+    "hex": "3b400650",
+    "assembly": "mov d5, 100",
+    "mnemonic": "mov",
+    "operands": [
+      "d5",
+      "100"
+    ],
+    "format": "rd"
+  },
+  "c0002cb6": {
+    "address": "c0002cb6",
+    "size": 4,
+    "hex": "d905ca41",
+    "assembly": "lea a5, [a0]7434",
+    "mnemonic": "lea",
+    "operands": [
+      "a5",
+      "[a0]7434"
+    ],
+    "format": "ro"
+  },
+  "c0002cba": {
+    "address": "c0002cba",
+    "size": 2,
+    "hex": "8216",
+    "assembly": "mov d6, 1",
+    "mnemonic": "mov",
+    "operands": [
+      "d6",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002cbc": {
+    "address": "c0002cbc",
+    "size": 2,
+    "hex": "280f",
+    "assembly": "st.b [a15]0, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a15]0",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002cbe": {
+    "address": "c0002cbe",
+    "size": 2,
+    "hex": "da32",
+    "assembly": "mov d15, 50",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "50"
+    ],
+    "format": "rd"
+  },
+  "c0002cc0": {
+    "address": "c0002cc0",
+    "size": 4,
+    "hex": "edd0a80c",
+    "assembly": "calla 0xd0001950",
+    "mnemonic": "calla",
+    "operands": [
+      "0xd0001950"
+    ],
+    "format": "a"
+  },
+  "c0002cc4": {
+    "address": "c0002cc4",
+    "size": 4,
+    "hex": "5ff20880",
+    "assembly": "jne d2, d15, 0xc0002cd4",
+    "mnemonic": "jne",
+    "operands": [
+      "d2",
+      "d15",
+      "0xc0002cd4"
+    ],
+    "format": "rra"
+  },
+  "c0002cc8": {
+    "address": "c0002cc8",
+    "size": 2,
+    "hex": "824f",
+    "assembly": "mov d15, 4",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "4"
+    ],
+    "format": "rd"
+  },
+  "c0002cca": {
+    "address": "c0002cca",
+    "size": 2,
+    "hex": "2cc0",
+    "assembly": "st.b [a12]0, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a12]0",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002ccc": {
+    "address": "c0002ccc",
+    "size": 2,
+    "hex": "6082",
+    "assembly": "mov.a a2, d8",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a2",
+      "d8"
+    ],
+    "format": "rr"
+  },
+  "c0002cce": {
+    "address": "c0002cce",
+    "size": 2,
+    "hex": "da08",
+    "assembly": "mov d15, 8",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "8"
+    ],
+    "format": "rd"
+  },
+  "c0002cd0": {
+    "address": "c0002cd0",
+    "size": 2,
+    "hex": "2c2a",
+    "assembly": "st.b [a2]10, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a2]10",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002cd2": {
+    "address": "c0002cd2",
+    "size": 2,
+    "hex": "0090",
+    "assembly": "ret",
+    "mnemonic": "ret",
+    "operands": [],
+    "format": ""
+  },
+  "c0002cd4": {
+    "address": "c0002cd4",
+    "size": 2,
+    "hex": "820f",
+    "assembly": "mov d15, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002cd6": {
+    "address": "c0002cd6",
+    "size": 2,
+    "hex": "2cc0",
+    "assembly": "st.b [a12]0, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a12]0",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002cd8": {
+    "address": "c0002cd8",
+    "size": 4,
+    "hex": "3b500320",
+    "assembly": "mov d2, 53",
+    "mnemonic": "mov",
+    "operands": [
+      "d2",
+      "53"
+    ],
+    "format": "rd"
+  },
+  "c0002cdc": {
+    "address": "c0002cdc",
+    "size": 2,
+    "hex": "3c0f",
+    "assembly": "j 0xc0002cfa",
+    "mnemonic": "j",
+    "operands": [
+      "0xc0002cfa"
+    ],
+    "format": "a"
+  },
+  "c0002cde": {
+    "address": "c0002cde",
+    "size": 2,
+    "hex": "da14",
+    "assembly": "mov d15, 20",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "20"
+    ],
+    "format": "rd"
+  },
+  "c0002ce0": {
+    "address": "c0002ce0",
+    "size": 4,
+    "hex": "d90fca41",
+    "assembly": "lea a15, [a0]7434",
+    "mnemonic": "lea",
+    "operands": [
+      "a15",
+      "[a0]7434"
+    ],
+    "format": "ro"
+  },
+  "c0002ce4": {
+    "address": "c0002ce4",
+    "size": 2,
+    "hex": "0800",
+    "assembly": "ld.bu d0, [a15]0",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d0",
+      "[a15]0"
+    ],
+    "format": "ro"
+  },
+  "c0002ce6": {
+    "address": "c0002ce6",
+    "size": 4,
+    "hex": "5ff00680",
+    "assembly": "jne d0, d15, 0xc0002cf2",
+    "mnemonic": "jne",
+    "operands": [
+      "d0",
+      "d15",
+      "0xc0002cf2"
+    ],
+    "format": "rra"
+  },
+  "c0002cea": {
+    "address": "c0002cea",
+    "size": 2,
+    "hex": "6083",
+    "assembly": "mov.a a3, d8",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a3",
+      "d8"
+    ],
+    "format": "rr"
+  },
+  "c0002cec": {
+    "address": "c0002cec",
+    "size": 2,
+    "hex": "da08",
+    "assembly": "mov d15, 8",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "8"
+    ],
+    "format": "rd"
+  },
+  "c0002cee": {
+    "address": "c0002cee",
+    "size": 2,
+    "hex": "2c3a",
+    "assembly": "st.b [a3]10, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a3]10",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002cf0": {
+    "address": "c0002cf0",
+    "size": 2,
+    "hex": "0090",
+    "assembly": "ret",
+    "mnemonic": "ret",
+    "operands": [],
+    "format": ""
+  },
+  "c0002cf2": {
+    "address": "c0002cf2",
+    "size": 2,
+    "hex": "820f",
+    "assembly": "mov d15, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002cf4": {
+    "address": "c0002cf4",
+    "size": 2,
+    "hex": "2cc0",
+    "assembly": "st.b [a12]0, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a12]0",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002cf6": {
+    "address": "c0002cf6",
+    "size": 4,
+    "hex": "3b500320",
+    "assembly": "mov d2, 53",
+    "mnemonic": "mov",
+    "operands": [
+      "d2",
+      "53"
+    ],
+    "format": "rd"
+  },
+  "c0002cfa": {
+    "address": "c0002cfa",
+    "size": 4,
+    "hex": "85ff1c80",
+    "assembly": "ld.w d15, 0xf000021c",
+    "mnemonic": "ld.w",
+    "operands": [
+      "d15",
+      "0xf000021c"
+    ],
+    "format": "ra"
+  },
+  "c0002cfe": {
+    "address": "c0002cfe",
+    "size": 4,
+    "hex": "590f6440",
+    "assembly": "st.w [a0]1316, d15",
+    "mnemonic": "st.w",
+    "operands": [
+      "[a0]1316",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002d02": {
+    "address": "c0002d02",
+    "size": 2,
+    "hex": "3c20",
+    "assembly": "j 0xc0002d42",
+    "mnemonic": "j",
+    "operands": [
+      "0xc0002d42"
+    ],
+    "format": "a"
+  },
+  "c0002d04": {
+    "address": "c0002d04",
+    "size": 2,
+    "hex": "6086",
+    "assembly": "mov.a a6, d8",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a6",
+      "d8"
+    ],
+    "format": "rr"
+  },
+  "c0002d06": {
+    "address": "c0002d06",
+    "size": 2,
+    "hex": "da08",
+    "assembly": "mov d15, 8",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "8"
+    ],
+    "format": "rd"
+  },
+  "c0002d08": {
+    "address": "c0002d08",
+    "size": 2,
+    "hex": "2c6a",
+    "assembly": "st.b [a6]10, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a6]10",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002d0a": {
+    "address": "c0002d0a",
+    "size": 2,
+    "hex": "0090",
+    "assembly": "ret",
+    "mnemonic": "ret",
+    "operands": [],
+    "format": ""
+  },
+  "c0002d0c": {
+    "address": "c0002d0c",
+    "size": 4,
+    "hex": "3b700320",
+    "assembly": "mov d2, 55",
+    "mnemonic": "mov",
+    "operands": [
+      "d2",
+      "55"
+    ],
+    "format": "rd"
+  },
+  "c0002d10": {
+    "address": "c0002d10",
+    "size": 2,
+    "hex": "3cf5",
+    "assembly": "j 0xc0002cfa",
+    "mnemonic": "j",
+    "operands": [
+      "0xc0002cfa"
+    ],
+    "format": "a"
+  },
+  "c0002d12": {
+    "address": "c0002d12",
+    "size": 2,
+    "hex": "da12",
+    "assembly": "mov d15, 18",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "18"
+    ],
+    "format": "rd"
+  },
+  "c0002d14": {
+    "address": "c0002d14",
+    "size": 2,
+    "hex": "1431",
+    "assembly": "ld.bu d1, [a3]",
+    "mnemonic": "ld.bu",
+    "operands": [
+      "d1",
+      "[a3]"
+    ],
+    "format": "ro"
+  },
+  "c0002d16": {
+    "address": "c0002d16",
+    "size": 4,
+    "hex": "8b612002",
+    "assembly": "ne d0, d1, 6",
+    "mnemonic": "ne",
+    "operands": [
+      "d0",
+      "d1",
+      "6"
+    ],
+    "format": "rrd"
+  },
+  "c0002d1a": {
+    "address": "c0002d1a",
+    "size": 4,
+    "hex": "ab4f8220",
+    "assembly": "sel d2, d0, d15, 36",
+    "mnemonic": "sel",
+    "operands": [
+      "d2",
+      "d0",
+      "d15",
+      "36"
+    ],
+    "format": "rrrd"
+  },
+  "c0002d1e": {
+    "address": "c0002d1e",
+    "size": 4,
+    "hex": "df511280",
+    "assembly": "jne d1, 5, 0xc0002d42",
+    "mnemonic": "jne",
+    "operands": [
+      "d1",
+      "5",
+      "0xc0002d42"
+    ],
+    "format": "rda"
+  },
+  "c0002d22": {
+    "address": "c0002d22",
+    "size": 2,
+    "hex": "820f",
+    "assembly": "mov d15, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002d24": {
+    "address": "c0002d24",
+    "size": 2,
+    "hex": "8200",
+    "assembly": "mov d0, 0",
+    "mnemonic": "mov",
+    "operands": [
+      "d0",
+      "0"
+    ],
+    "format": "rd"
+  },
+  "c0002d26": {
+    "address": "c0002d26",
+    "size": 2,
+    "hex": "6082",
+    "assembly": "mov.a a2, d8",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a2",
+      "d8"
+    ],
+    "format": "rr"
+  },
+  "c0002d28": {
+    "address": "c0002d28",
+    "size": 2,
+    "hex": "cc20",
+    "assembly": "ld.a a15, [a2]0",
+    "mnemonic": "ld.a",
+    "operands": [
+      "a15",
+      "[a2]0"
+    ],
+    "format": "ro"
+  },
+  "c0002d2a": {
+    "address": "c0002d2a",
+    "size": 2,
+    "hex": "10ff",
+    "assembly": "addsc.a a15, a15, d15, 0",
+    "mnemonic": "addsc.a",
+    "operands": [
+      "a15",
+      "a15",
+      "d15",
+      "0"
+    ],
+    "format": "rrrd"
+  },
+  "c0002d2c": {
+    "address": "c0002d2c",
+    "size": 2,
+    "hex": "c21f",
+    "assembly": "add d15, 1",
+    "mnemonic": "add",
+    "operands": [
+      "d15",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002d2e": {
+    "address": "c0002d2e",
+    "size": 2,
+    "hex": "b01f",
+    "assembly": "add.a a15, 1",
+    "mnemonic": "add.a",
+    "operands": [
+      "a15",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002d30": {
+    "address": "c0002d30",
+    "size": 2,
+    "hex": "16ff",
+    "assembly": "and d15, 255",
+    "mnemonic": "and",
+    "operands": [
+      "d15",
+      "255"
+    ],
+    "format": "rd"
+  },
+  "c0002d32": {
+    "address": "c0002d32",
+    "size": 2,
+    "hex": "2800",
+    "assembly": "st.b [a15]0, d0",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a15]0",
+      "d0"
+    ],
+    "format": "or"
+  },
+  "c0002d34": {
+    "address": "c0002d34",
+    "size": 4,
+    "hex": "bf4ff9ff",
+    "assembly": "jlt.u d15, 4, 0xc0002d26",
+    "mnemonic": "jlt.u",
+    "operands": [
+      "d15",
+      "4",
+      "0xc0002d26"
+    ],
+    "format": "rda"
+  },
+  "c0002d38": {
+    "address": "c0002d38",
+    "size": 2,
+    "hex": "821f",
+    "assembly": "mov d15, 1",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002d3a": {
+    "address": "c0002d3a",
+    "size": 2,
+    "hex": "2c2a",
+    "assembly": "st.b [a2]10, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a2]10",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002d3c": {
+    "address": "c0002d3c",
+    "size": 2,
+    "hex": "825f",
+    "assembly": "mov d15, 5",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "5"
+    ],
+    "format": "rd"
+  },
+  "c0002d3e": {
+    "address": "c0002d3e",
+    "size": 2,
+    "hex": "ac24",
+    "assembly": "st.h [a2]8, d15",
+    "mnemonic": "st.h",
+    "operands": [
+      "[a2]8",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002d40": {
+    "address": "c0002d40",
+    "size": 2,
+    "hex": "0090",
+    "assembly": "ret",
+    "mnemonic": "ret",
+    "operands": [],
+    "format": ""
+  },
+  "c0002d42": {
+    "address": "c0002d42",
+    "size": 2,
+    "hex": "6083",
+    "assembly": "mov.a a3, d8",
+    "mnemonic": "mov.a",
+    "operands": [
+      "a3",
+      "d8"
+    ],
+    "format": "rr"
+  },
+  "c0002d44": {
+    "address": "c0002d44",
+    "size": 2,
+    "hex": "822f",
+    "assembly": "mov d15, 2",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "2"
+    ],
+    "format": "rd"
+  },
+  "c0002d46": {
+    "address": "c0002d46",
+    "size": 2,
+    "hex": "cc30",
+    "assembly": "ld.a a15, [a3]0",
+    "mnemonic": "ld.a",
+    "operands": [
+      "a15",
+      "[a3]0"
+    ],
+    "format": "ro"
+  },
+  "c0002d48": {
+    "address": "c0002d48",
+    "size": 2,
+    "hex": "2802",
+    "assembly": "st.b [a15]0, d2",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a15]0",
+      "d2"
+    ],
+    "format": "or"
+  },
+  "c0002d4a": {
+    "address": "c0002d4a",
+    "size": 2,
+    "hex": "2c3a",
+    "assembly": "st.b [a3]10, d15",
+    "mnemonic": "st.b",
+    "operands": [
+      "[a3]10",
+      "d15"
+    ],
+    "format": "or"
+  },
+  "c0002d4c": {
+    "address": "c0002d4c",
+    "size": 2,
+    "hex": "821f",
+    "assembly": "mov d15, 1",
+    "mnemonic": "mov",
+    "operands": [
+      "d15",
+      "1"
+    ],
+    "format": "rd"
+  },
+  "c0002d4e": {
+    "address": "c0002d4e",
+    "size": 2,
+    "hex": "ac34",
+    "assembly": "st.h [a3]8, d15",
+    "mnemonic": "st.h",
+    "operands": [
+      "[a3]8",
+      "d15"
+    ],
+    "format": "or"
+  }
+}
