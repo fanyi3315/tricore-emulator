@@ -106,8 +106,8 @@ void handle_instruction(JSON_Object *instruction) {
     handle_sel_instruction(instruction);
   } else if (strcmp(mnemonic, "sh") == 0) {
     handle_sh_instruction(instruction);
-  } else if (strcmp(mnemonic, "sh") == 0) {
-    handle_sh_instruction(instruction);
+  } else if (strcmp(mnemonic, "sha") == 0) {
+    handle_sha_instruction(instruction);
   } else if (strcmp(mnemonic, "sh.or.t") == 0) {
     handle_short_instruction(instruction);
   } else if (strcmp(mnemonic, "st.a") == 0) {
@@ -142,11 +142,14 @@ int main(int argc, char *argv[]) {
   instructions = json_value_get_object(root_value);
   // kickoff execution
   init_memory();
-  set_register("pc", 0xc0002bce); // use 0x80000238 for firmware debugging
-  set_register("a4", 0xc0000000); // random scratchpad in memory
+  set_register("pc", 0xc0002bce);  // use 0x80000238 for firmware debugging
+  set_register("a0", 0xD0006F54);  // state when function is called
+  set_register("d4", 0xD00070DA);  // state when function is called
+  set_register("a4", 0xc0000000);  // random scratchpad in memory
+  set_register("a10", 0x00080080); // random scratchpad in memory
   uint32_t seed = 0xE572B95C;
   set_memory_uint32_t(0xc0000000, seed);
-  debugger_tripped = 1;
+  // debugger_tripped = 1;
   for (;;) {
     program_counter = get_register("pc");
     sprintf(formatted_address, "%08x", program_counter);

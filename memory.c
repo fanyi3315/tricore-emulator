@@ -11,17 +11,22 @@ static uint8_t *pmu1 = NULL;
 static uint8_t *external_flash = NULL;
 static uint8_t *dram = NULL;
 static uint8_t *cram = NULL;
+static uint8_t *stack = NULL;
 
 void set_memory_uint8_t(uint32_t address, uint8_t value) {
   printf("set_memory_uint8_t: %08x %02x\n", address, value);
   bool valid_dram_range = address >= 0xd0000000 && address <= 0xd000ffff;
   bool valid_cram_range = address >= 0xc0000000 && address <= 0xc00fffff;
+  bool valid_stack_range = address >= 0x00080000 && address <= 0x00080100;
   if (valid_dram_range) {
     uint32_t offset = address - 0xd0000000;
     dram[offset] = value;
   } else if (valid_cram_range) {
     uint32_t offset = address - 0xc0000000;
     cram[offset] = value;
+  } else if (valid_stack_range) {
+    uint32_t offset = address - 0x00080000;
+    stack[offset] = value;
   } else {
     fprintf(stderr, "set_memory_uint8_t: TODO: %08x\n", address);
     exit(1);
@@ -88,7 +93,11 @@ uint8_t get_memory_uint8_t(uint32_t address) {
   } else if (address >= 0xd0000000 && address <= 0xd000ffff) {
     uint32_t offset = address - 0xd0000000;
     printf("get_memory_uint8_t dram %08x %08x\n", address, offset);
-    return cram[offset];
+    return dram[offset];
+  } else if (address >= 0x00080000 && address <= 0x00080100) {
+    uint32_t offset = address - 0x00080000;
+    printf("get_memory_uint8_t stack %08x %08x\n", address, offset);
+    return stack[offset];
   } else {
     fprintf(stderr, "get_memory_uint8_t: TODO: %08x\n", address);
     exit(1);
@@ -137,6 +146,7 @@ void init_memory() {
                         external_flash_fd, 0);
   cram = calloc(1, 0xFFFF);
   dram = calloc(1, 0xFFFF);
+  stack = calloc(1, 0x100);
 }
 
 void flush_memory() {

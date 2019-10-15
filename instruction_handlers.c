@@ -8,49 +8,86 @@
 #include <string.h>
 
 void handle_add_instruction(JSON_Object *instruction) {
-  const char *register_name;
-  int32_t value;
-  register_name = parse_operand_as_string(instruction, 0);
-  value = parse_operand_as_int32_t(instruction, 1, 10);
-  set_register(register_name, get_register(register_name) + value);
+  const char *operands_format;
+  operands_format = json_object_get_string(instruction, "format");
+  if (strcmp(operands_format, "rd") == 0) {
+    const char *register_name;
+    int32_t value;
+    register_name = parse_operand_as_string(instruction, 0);
+    value = parse_operand_as_int32_t(instruction, 1, 10);
+    set_register(register_name, get_register(register_name) + value);
+  } else if (strcmp(operands_format, "rrr") == 0) {
+    const char *destination_register;
+    const char *register_a;
+    const char *register_b;
+    destination_register = parse_operand_as_string(instruction, 0);
+    register_a = parse_operand_as_string(instruction, 1);
+    register_b = parse_operand_as_string(instruction, 2);
+    set_register(destination_register,
+                 get_register(register_a) + get_register(register_b));
+  } else {
+    fprintf(stderr, "TODO %s\n", operands_format);
+    exit(1);
+  }
   progress_program_counter(instruction);
 }
 
 void handle_addi_instruction(JSON_Object *instruction) {
-  const char *destination_register;
-  const char *source_register;
-  uint32_t value;
-  destination_register = parse_operand_as_string(instruction, 0);
-  source_register = parse_operand_as_string(instruction, 1);
-  value = parse_operand_as_uint32_t(instruction, 2, 10);
-  set_register(destination_register, get_register(source_register) + value);
+  const char *operands_format;
+  operands_format = json_object_get_string(instruction, "format");
+  if (strcmp(operands_format, "rrd") == 0) {
+    const char *destination_register;
+    const char *source_register;
+    int32_t value;
+    destination_register = parse_operand_as_string(instruction, 0);
+    source_register = parse_operand_as_string(instruction, 1);
+    value = parse_operand_as_int32_t(instruction, 2, 10);
+    set_register(destination_register, get_register(source_register) + value);
+  } else {
+    fprintf(stderr, "TODO %s\n", operands_format);
+    exit(1);
+  }
   progress_program_counter(instruction);
 }
 
 void handle_addih_instruction(JSON_Object *instruction) {
-  const char *destination_register;
-  const char *source_register;
-  uint16_t value;
-  destination_register = parse_operand_as_string(instruction, 0);
-  source_register = parse_operand_as_string(instruction, 1);
-  value = parse_operand_as_uint32_t(instruction, 2, 10);
-  set_register(destination_register,
-               get_register(source_register) + (value << 16));
+  const char *operands_format;
+  operands_format = json_object_get_string(instruction, "format");
+  if (strcmp(operands_format, "rrd") == 0) {
+    const char *destination_register;
+    const char *source_register;
+    uint16_t value;
+    destination_register = parse_operand_as_string(instruction, 0);
+    source_register = parse_operand_as_string(instruction, 1);
+    value = parse_operand_as_uint32_t(instruction, 2, 10);
+    set_register(destination_register,
+                 get_register(source_register) + (value << 16));
+  } else {
+    fprintf(stderr, "TODO %s\n", operands_format);
+    exit(1);
+  }
   progress_program_counter(instruction);
 }
 
 void handle_addsca_instruction(JSON_Object *instruction) {
-  const char *destination_register;
-  const char *source_register;
-  const char *data_register;
-  uint8_t value;
-  destination_register = parse_operand_as_string(instruction, 0);
-  source_register = parse_operand_as_string(instruction, 1);
-  data_register = parse_operand_as_string(instruction, 2);
-  value = parse_operand_as_uint32_t(instruction, 3, 10);
-  set_register(destination_register,
-               get_register(source_register) +
-                   (get_register(data_register) << value));
+  const char *operands_format;
+  operands_format = json_object_get_string(instruction, "format");
+  if (strcmp(operands_format, "rrrd") == 0) {
+    const char *destination_register;
+    const char *source_register;
+    const char *data_register;
+    uint8_t value;
+    destination_register = parse_operand_as_string(instruction, 0);
+    source_register = parse_operand_as_string(instruction, 1);
+    data_register = parse_operand_as_string(instruction, 2);
+    value = parse_operand_as_uint32_t(instruction, 3, 10);
+    set_register(destination_register,
+                 get_register(source_register) +
+                     (get_register(data_register) << value));
+  } else {
+    fprintf(stderr, "TODO %s\n", operands_format);
+    exit(1);
+  }
   progress_program_counter(instruction);
 }
 
@@ -134,6 +171,9 @@ void handle_extru_instruction(JSON_Object *instruction) {
     fprintf(stderr, "handle_extru_instruction: TODO %08x %02x %02x\n",
             get_register(source_register), position, width);
     exit(1);
+  } else if (width == 0x01) {
+    set_register(destination_register,
+                 extract_bit(get_register(source_register), position));
   } else if (width == 0x04) {
     set_register(destination_register,
                  (get_register(source_register) >> position) & 0x0f);
@@ -430,6 +470,12 @@ void handle_ldbu_instruction(JSON_Object *instruction) {
     set_register("d15", get_memory_uint8_t(get_register("a4") + 0x01));
   } else if (strcmp(instruction_hex, "0c43") == 0) { // ld.bu d15, [a4]3
     set_register("d15", get_memory_uint8_t(get_register("a4") + 0x03));
+  } else if (strcmp(instruction_hex, "0c20") == 0) { // ld.bu d15, [a2]0
+    set_register("d15", get_memory_uint8_t(get_register("a2") + 0x00));
+  } else if (strcmp(instruction_hex, "0ca6") == 0) { // ld.bu d15, [sp]6
+    set_register("d15", get_memory_uint8_t(get_register("sp") + 0x06));
+  } else if (strcmp(instruction_hex, "1420") == 0) { // ld.bu d0, [a2]
+    set_register("d0", get_memory_uint8_t(get_register("a2") + 0x00));
   } else {
     fprintf(stderr, "TODO\n");
     exit(1);
@@ -509,6 +555,14 @@ void handle_lea_instruction(JSON_Object *instruction) {
     set_register("a15", get_register("a3") - 0x01);
   } else if (strcmp(instruction_hex, "d9440c00") == 0) { // lea a4, [a4]12
     set_register("a4", get_register("a4") + 0x0c);
+  } else if (strcmp(instruction_hex, "d9af1000") == 0) { // lea a15, [sp]16
+    set_register("a15", get_register("sp") + 0x10);
+  } else if (strcmp(instruction_hex, "d9a21000") == 0) { // lea a2, [sp]16
+    set_register("a2", get_register("sp") + 0x10);
+  } else if (strcmp(instruction_hex, "d9fff4ff") == 0) { // lea a15, [a15]-12
+    set_register("a15", get_register("a15") - 0x0C);
+  } else if (strcmp(instruction_hex, "d9a61000") == 0) { // lea a6, [sp]16
+    set_register("a6", get_register("sp") + 0x10);
   } else {
     fprintf(stderr, "TODO\n");
     exit(1);
@@ -829,7 +883,6 @@ void handle_short_instruction(JSON_Object *instruction) {
     pos1 = parse_operand_as_int8_t(instruction, 2, 10);
     register_b = parse_operand_as_string(instruction, 3);
     pos2 = parse_operand_as_int8_t(instruction, 4, 10);
-
     uint32_t shifted_destination_register = get_register(destination_register)
                                             << 1;
     uint8_t bit1 = extract_bit(get_register(register_a), pos1);
@@ -868,6 +921,10 @@ void handle_stb_instruction(JSON_Object *instruction) {
     set_memory_uint8_t(get_register("a15"), get_register("d1"));
   } else if (strcmp(instruction_hex, "2802") == 0) { // st.b [a15]0, d2
     set_memory_uint8_t(get_register("a15"), get_register("d2"));
+  } else if (strcmp(instruction_hex, "893f34f8") == 0) { // st.b [a3]-12, d15
+    set_memory_uint8_t(get_register("a3") - 0x0C, get_register("d15"));
+  } else if (strcmp(instruction_hex, "280f") == 0) { // st.b [a15]0, d15
+    set_memory_uint8_t(get_register("a15"), get_register("d15"));
   } else {
     fprintf(stderr, "TODO\n");
     exit(1);
